@@ -12,7 +12,6 @@ dinos:
       speed_kmh: 29
     pack_size:
       base: 3
-      with_social: 4.5
     mutation_recs: ["Congenital", "Gastro", "Photosynthetic", "Nocturnal", "Cellular"]
 
   - name: Carnotaurus
@@ -28,7 +27,6 @@ dinos:
       speed_kmh: 49.5
     pack_size:
       base: 3
-      with_social: 4.5
     mutation_recs: ["Congenital", "Gastro", "Photosynthetic", "Nocturnal", "Cellular"]
 
   - name: Ceratosaurus
@@ -44,7 +42,6 @@ dinos:
       speed_kmh: 40.2
     pack_size:
       base: 4
-      with_social: 6
     mutation_recs:
       [
         "Hemomania",
@@ -69,7 +66,6 @@ dinos:
       speed_kmh: 18
     pack_size:
       base: 2
-      with_social: 3
     mutation_recs:
       ["Efficient Digestion", "Hydrodynamic", "Gastro", "Reniculate Kidneys", "Wader", "Epidermal Fibrosis"]
 
@@ -86,7 +82,6 @@ dinos:
       speed_kmh: 47.5
     pack_size:
       base: 4
-      with_social: 6
     mutation_recs: ["Congenital", "Gastro", "Nocturnal"]
 
   - name: Herrerasaurus
@@ -102,7 +97,6 @@ dinos:
       speed_kmh: 45
     pack_size:
       base: 8
-      with_social: 12
     mutation_recs:
       ["Efficient Digestion", "Congenital Hypoalgesia", "Gastronomic", "Reinforced Tendons", "Enlarged Meniscus"]
 
@@ -119,7 +113,6 @@ dinos:
       speed_kmh: 46.8
     pack_size:
       base: 8
-      with_social: 12
     mutation_recs:
       [
         "Reinforced Tendons",
@@ -143,7 +136,6 @@ dinos:
       speed_kmh: 28.5
     pack_size:
       base: 6
-      with_social: 9
     mutation_recs: ["Enlarged Meniscus", "Reinforced Tendons", "Reniculate Kidneys"]
 
   - name: Troodon
@@ -159,7 +151,6 @@ dinos:
       speed_kmh: 45
     pack_size:
       base: 10
-      with_social: 15
     mutation_recs: ["Hemomania", "Hypermetabolic", "Reinforced Tendons"]
 
   - name: Beipiaosaurus
