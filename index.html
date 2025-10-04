@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>The Isle (Evrima) — Dinosaur Stats</title>
+    <link rel="stylesheet" href="styles.css" />
+    <!-- jQuery and js-yaml from CDNs (static, no frameworks) -->
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.min.js"
+      integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+  </head>
+  <body>
+    <header class="container">
+      <h1>The Isle (Evrima) — Dinosaur Stats</h1>
+      <p class="subtle">
+        This "cheat sheet" is intended to provide the most important data you might need to look up while playing.
+      </p>
+      <p class="subtle">
+        It is not intended to provide you with all information about each dinosaur, nor general tutorials for the game.
+        For that purpose, try heading over to <a href="https://www.evrimaquickguide.com/">evrimaquickguide.com</a>
+      </p>
+      <details class="note">
+        <summary>Usage notes</summary>
+        <div>
+          <p>All data is subject to change with future updates, and there might be some mistakes.</p>
+
+          <p>Percentages especially are tricky to determine precisely.
+          If a specific value doesn't have any decimal places, that could be because it happens to be exactly that value,
+          but also because I might have been too lazy to determine it more precisely. Feel free to contribute ;)</p>
+        </div>
+      </details>
+
+    <main class="container">
+      <div class="table-scroll">
+        <div class="table-wrapper">
+          <table id="dino-table">
+            <thead>
+              <tr> 
+                <th class="th-tooltip sortable" data-sort-key="name" data-tip="Dinosaur species name">Dinosaur</th>
+                <th class="th-tooltip sortable" data-sort-key="diet" data-tip="Dinosaur diet type (carnivore, omnivore, herbivore)">diet</th>
+                <th class="th-tooltip sortable" data-sort-key="gt1" data-tip="Growth % when the 1st mutation unlocks. This is also more or less the begging threshold.">1. muta</th>
+                <th class="th-tooltip sortable" data-sort-key="gt2" data-tip="Growth % when the 2nd mutation unlocks">2. muta</th>
+                <th class="th-tooltip sortable" data-sort-key="gt3" data-tip="Growth % when the 3rd mutation unlocks">3. muta</th>
+                <th class="th-tooltip sortable" data-sort-key="sancm" data-tip="Growth % threshold for eating sanctuary mushrooms (not applicable for carnivores)">Sanctuary 🍄</th>
+                <th class="th-tooltip sortable" data-sort-key="sanc" data-tip="Growth % after which you can no longer enter sanctuaries. 'No value' means you're allowed in even as adults.">Sanctuary</th>
+                <th class="th-tooltip sortable" data-sort-key="weight" data-tip="Adult weight in kg">Weight</th>
+                <th class="th-tooltip sortable" data-sort-key="bite" data-tip="Adult bite force (N). This only refers to the literal bite force, not your actual most useful attack (see for example stego)">Bite</th>
+                <th class="th-tooltip sortable" data-sort-key="speed" data-tip="Adult top speed (km/h). Does not include special speeds like Carno charge or Galli with nutrient speed boost.">Speed</th>
+                <th class="th-tooltip sortable" data-sort-key="pack" data-tip="Pack size limit (base / with Social Behaviour). Note: I haven't verified how non-integer results of Social Behaviour are rounded, hence the .5 values.">Pack size</th>
+                <th
+                  class="th-tooltip"
+                  data-tip="Hover or tap the ⓘ icon for recommended top mutation picks. These are only subjective recommendations, and very much work in progress!"
+                >
+                  Mutations
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <!-- rows injected by script.js -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+
+    <footer class="container footer">
+      <a href="">Contribute on GitHub</a>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

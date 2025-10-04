@@ -1,0 +1,362 @@
+dinos:
+  - name: Tyrannosaurus (unverified)
+    diet: Carnivore
+    growth_thresholds:
+      first_mutation: 0
+      second_mutation: 0
+      third_mutation: 100
+      sanctuary_lockout: 0
+    stats:
+      weight_kg: 9400
+      bite_force_N: 850
+      speed_kmh: 29
+    pack_size:
+      base: 3
+      with_social: 4.5
+    mutation_recs: ["Congenital", "Gastro", "Photosynthetic", "Nocturnal", "Cellular"]
+
+  - name: Carnotaurus
+    diet: Carnivore
+    growth_thresholds:
+      first_mutation: 8.0
+      second_mutation: 44.8
+      third_mutation: 100
+      sanctuary_lockout: 22.3
+    stats:
+      weight_kg: 1300
+      bite_force_N: 150
+      speed_kmh: 49.5
+    pack_size:
+      base: 3
+      with_social: 4.5
+    mutation_recs: ["Congenital", "Gastro", "Photosynthetic", "Nocturnal", "Cellular"]
+
+  - name: Ceratosaurus
+    diet: Carnivore
+    growth_thresholds:
+      first_mutation: 7.4
+      second_mutation: 33.4
+      third_mutation: 100
+      sanctuary_lockout: 20.3
+    stats:
+      weight_kg: 1300
+      bite_force_N: 150
+      speed_kmh: 40.2
+    pack_size:
+      base: 4
+      with_social: 6
+    mutation_recs:
+      [
+        "Hemomania",
+        "Gastro",
+        "Accelerated Prey Drive",
+        "Congenital Hypoalgesia",
+        "Hypermetabolic",
+        "Photosynthetic Tissue",
+        "Nocturnal",
+      ]
+
+  - name: Deinosuchus
+    diet: Carnivore
+    growth_thresholds:
+      first_mutation: 4.5
+      second_mutation: 31.8
+      third_mutation: 100
+      sanctuary_lockout: 0 # yes, crocs are always banned from sanctuaries, even at 0% growth
+    stats:
+      weight_kg: 8000
+      bite_force_N: 500
+      speed_kmh: 18
+    pack_size:
+      base: 2
+      with_social: 3
+    mutation_recs:
+      ["Efficient Digestion", "Hydrodynamic", "Gastro", "Reniculate Kidneys", "Wader", "Epidermal Fibrosis"]
+
+  - name: Dilophosaurus
+    diet: Carnivore
+    growth_thresholds:
+      first_mutation: 10.6
+      second_mutation: 40.4
+      third_mutation: 100
+      sanctuary_lockout: 26.7
+    stats:
+      weight_kg: 700
+      bite_force_N: 85
+      speed_kmh: 47.5
+    pack_size:
+      base: 4
+      with_social: 6
+    mutation_recs: ["Congenital", "Gastro", "Nocturnal"]
+
+  - name: Herrerasaurus
+    diet: Carnivore
+    growth_thresholds:
+      first_mutation: 10.1
+      second_mutation: 32.6
+      third_mutation: 100
+      sanctuary_lockout: 22
+    stats:
+      weight_kg: 175
+      bite_force_N: 30
+      speed_kmh: 45
+    pack_size:
+      base: 8
+      with_social: 12
+    mutation_recs:
+      ["Efficient Digestion", "Congenital Hypoalgesia", "Gastronomic", "Reinforced Tendons", "Enlarged Meniscus"]
+
+  - name: Omniraptor
+    diet: Carnivore
+    growth_thresholds:
+      first_mutation: 10.6
+      second_mutation: 36.2
+      third_mutation: 100
+      sanctuary_lockout: 25
+    stats:
+      weight_kg: 450
+      bite_force_N: 65
+      speed_kmh: 46.8
+    pack_size:
+      base: 8
+      with_social: 12
+    mutation_recs:
+      [
+        "Reinforced Tendons",
+        "Gastro",
+        "Congenital",
+        "Photosynthetic Tissue",
+        "Efficient Digestion",
+        "Enlarged Meniscus",
+      ]
+
+  - name: Pteranodon
+    diet: Carnivore
+    growth_thresholds:
+      first_mutation: 13.2
+      second_mutation: 38.8
+      third_mutation: 100
+      sanctuary_lockout: null
+    stats:
+      weight_kg: 45
+      bite_force_N: 20
+      speed_kmh: 28.5
+    pack_size:
+      base: 6
+      with_social: 9
+    mutation_recs: ["Enlarged Meniscus", "Reinforced Tendons", "Reniculate Kidneys"]
+
+  - name: Troodon
+    diet: Carnivore
+    growth_thresholds:
+      first_mutation: 13.8
+      second_mutation: 48.3
+      third_mutation: 100
+      sanctuary_lockout: null
+    stats:
+      weight_kg: 60
+      bite_force_N: 15
+      speed_kmh: 45
+    pack_size:
+      base: 10
+      with_social: 15
+    mutation_recs: ["Hemomania", "Hypermetabolic", "Reinforced Tendons"]
+
+  - name: Beipiaosaurus
+    diet: Omnivore
+    growth_thresholds:
+      first_mutation: 14.1
+      second_mutation: 53.1
+      third_mutation: 100
+      sanctuary_mushroom: 40
+      sanctuary_lockout: null
+    stats:
+      weight_kg: 90
+      bite_force_N: 20
+      speed_kmh: 32
+    pack_size:
+      base: 12
+      with_social: 18
+    mutation_recs: ["Hydrodynamic", "Hypervigilance", "Reinforced Tendons"]
+
+  - name: Gallimimus
+    diet: Omnivore
+    growth_thresholds:
+      first_mutation: 7.3
+      second_mutation: 31.7
+      third_mutation: 100
+      sanctuary_mushroom: 17
+      sanctuary_lockout: 18.5
+    stats:
+      weight_kg: 490
+      bite_force_N: 25
+      speed_kmh: 49.7
+    pack_size:
+      base: 8
+      with_social: 12
+    mutation_recs:
+      [
+        "Nocturnal",
+        "Photosynthetic Tissue",
+        "Photosynthetic Regeneration",
+        "Hypervigilance",
+        "Reinforced Tendons",
+        "Enlarged Meniscus",
+      ]
+
+  - name: Diabloceratops
+    diet: Herbivore
+    growth_thresholds:
+      first_mutation: 6.0
+      second_mutation: 32.8
+      third_mutation: 100
+      sanctuary_mushroom: 14.4
+      sanctuary_lockout: 14.4
+    stats:
+      weight_kg: 3000
+      bite_force_N: 275
+      speed_kmh: 36
+    pack_size:
+      base: 6
+      with_social: 9
+    mutation_recs:
+      [
+        "Tactile Endurance",
+        "Xerocole Adaptation",
+        "Reabsorption",
+        "Sustained Hydration",
+        "Gastro",
+        "Cellular Regeneration",
+        "Enhanced Digestion",
+        "Epidermal Fibrosis",
+      ]
+
+  - name: Dryosaurus
+    diet: Herbivore
+    growth_thresholds:
+      first_mutation: 12.2
+      second_mutation: 52.7
+      third_mutation: 100
+      sanctuary_mushroom: 59.2
+      sanctuary_lockout: 99.9
+    stats:
+      weight_kg: 130
+      bite_force_N: 20
+      speed_kmh: 45
+    pack_size:
+      base: 10
+      with_social: 15
+    mutation_recs: ["Photosynthetic", "Reinforced Tendons", "Hypervigilance", "Nocturnal", "Reabsorption"]
+
+  - name: Hypsilophodon
+    diet: Herbivore
+    growth_thresholds:
+      first_mutation: 31.8
+      second_mutation: 65.9
+      third_mutation: 100
+      sanctuary_mushroom: 66
+      sanctuary_lockout: null
+    stats:
+      weight_kg: 20
+      bite_force_N: 2
+      speed_kmh: 39.6
+    pack_size:
+      base: 10
+      with_social: 15
+    mutation_recs: ["Photosynthetic Tissue", "Nocturnal", "Reinforced Tendons", "water mutations", "Hypervigilance"]
+
+  - name: Pachycephalosaurus
+    diet: Herbivore
+    growth_thresholds:
+      first_mutation: 11.6
+      second_mutation: 34.9
+      third_mutation: 100
+      sanctuary_mushroom: 41.6
+      sanctuary_lockout: 48
+    stats:
+      weight_kg: 500
+      bite_force_N: 30
+      speed_kmh: 41.8
+    pack_size:
+      base: 8
+      with_social: 12
+    mutation_recs: ["Hypervigilance"]
+
+  - name: Stegosaurus
+    diet: Herbivore
+    growth_thresholds:
+      first_mutation: 3.8
+      second_mutation: 51.9
+      third_mutation: 100
+      sanctuary_mushroom: 11.5
+      sanctuary_lockout: 15.6
+    stats:
+      weight_kg: 6000
+      bite_force_N: 50
+      speed_kmh: 26.2
+    pack_size:
+      base: 5
+      with_social: 7.5
+    mutation_recs:
+      [
+        "Epidermal Fibrosis",
+        "tactile endurance",
+        "Photosynthetic Regeneration",
+        "Truculency",
+        "Multichambered Lungs",
+        "Gastronomic",
+        "Photosynthetic Tissue",
+        "Nocturnal",
+      ]
+
+  - name: Tenontosaurus
+    diet: Herbivore
+    growth_thresholds:
+      first_mutation: 6.4
+      second_mutation: 35.6
+      third_mutation: 100
+      sanctuary_mushroom: 16.5
+      sanctuary_lockout: 16.8
+    stats:
+      weight_kg: 1600
+      bite_force_N: 35
+      speed_kmh: 40.3
+    pack_size:
+      base: 8
+      with_social: 12
+    mutation_recs: ["Epidermal", "Tactile", "Gastro", "Photosynthetic", "Nocturnal"]
+
+  - name: Maiasaura
+    diet: Herbivore
+    growth_thresholds:
+      first_mutation: 9.1
+      second_mutation: 45.5
+      third_mutation: 100
+      sanctuary_mushroom: 18.2
+      sanctuary_lockout: 18.2
+    stats:
+      weight_kg: 3800
+      bite_force_N: 40
+      speed_kmh: 46.9 # 35.2 in quadrupedal stance
+    pack_size:
+      base: 10
+      with_social: 15
+    mutation_recs:
+      ["Epidermal Fibrosis", "Tactile Endurance", "Truculency", "Photosynthetic Regeneration", "water mutations"]
+
+  - name: Triceratops
+    diet: Herbivore
+    growth_thresholds:
+      first_mutation: 1.4
+      second_mutation: 42.9
+      third_mutation: 100
+      sanctuary_mushroom: 9.8
+      sanctuary_lockout: 9.8
+    stats:
+      weight_kg: 9500
+      bite_force_N: 900
+      speed_kmh: 23.4
+    pack_size:
+      base: 4
+      with_social: 6
+    mutation_recs: ["placeholder"]
