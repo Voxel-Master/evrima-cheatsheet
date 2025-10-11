@@ -96,7 +96,7 @@ dinos:
       speed_kmh: 47.5
     pack_size:
       base: 4
-    mutation_recs: ["Congenital Hypoalgesia", "Gastronomic Regeneration", "Nocturnal"]
+    mutation_recs: ["Congenital Hypoalgesia", "Gastronomic Regeneration", "Nocturnal", "Hemomania", "Photosynthetic Tissue", "Hypermetabolic Inanination"]
 
   - name: Herrerasaurus
     diet: Carnivore
