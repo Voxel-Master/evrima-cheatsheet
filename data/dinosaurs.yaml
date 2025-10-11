@@ -12,7 +12,7 @@ dinos:
       speed_kmh: 29
     pack_size:
       base: 3
-    mutation_recs: ["Congenital", "Gastro", "Photosynthetic", "Nocturnal", "Cellular"]
+    mutation_recs: ["tbd"]
 
   - name: Carnotaurus
     diet: Carnivore
@@ -27,7 +27,14 @@ dinos:
       speed_kmh: 49.5
     pack_size:
       base: 3
-    mutation_recs: ["Congenital", "Gastro", "Photosynthetic", "Nocturnal", "Cellular"]
+    mutation_recs:
+      [
+        "Congenital Hypoalgesia",
+        "Gastronomic Regeneration",
+        "Photosynthetic Tissue",
+        "Nocturnal",
+        "Cellular Regeneration",
+      ]
 
   - name: Ceratosaurus
     diet: Carnivore
@@ -45,10 +52,10 @@ dinos:
     mutation_recs:
       [
         "Hemomania",
-        "Gastro",
+        "Gastronomic Regeneration",
         "Accelerated Prey Drive",
         "Congenital Hypoalgesia",
-        "Hypermetabolic",
+        "Hypermetabolic Inanination",
         "Photosynthetic Tissue",
         "Nocturnal",
       ]
@@ -67,7 +74,14 @@ dinos:
     pack_size:
       base: 2
     mutation_recs:
-      ["Efficient Digestion", "Hydrodynamic", "Gastro", "Reniculate Kidneys", "Wader", "Epidermal Fibrosis"]
+      [
+        "Efficient Digestion",
+        "Hydrodynamic",
+        "Gastronomic Regeneration",
+        "Reniculate Kidneys",
+        "Hypermetabolic Inanination",
+        "Wader",
+      ]
 
   - name: Dilophosaurus
     diet: Carnivore
@@ -82,7 +96,7 @@ dinos:
       speed_kmh: 47.5
     pack_size:
       base: 4
-    mutation_recs: ["Congenital", "Gastro", "Nocturnal"]
+    mutation_recs: ["Congenital Hypoalgesia", "Gastronomic Regeneration", "Nocturnal"]
 
   - name: Herrerasaurus
     diet: Carnivore
@@ -98,7 +112,15 @@ dinos:
     pack_size:
       base: 8
     mutation_recs:
-      ["Efficient Digestion", "Congenital Hypoalgesia", "Gastronomic", "Reinforced Tendons", "Enlarged Meniscus"]
+      [
+        "Reinforced Tendons",
+        "Congenital Hypoalgesia",
+        "Gastronomic Regeneration",
+        "Enlarged Meniscus",
+        "Efficient Digestion",
+        "Reabsorption",
+        "Xerocole Adaptation",
+      ]
 
   - name: Omniraptor
     diet: Carnivore
@@ -116,8 +138,8 @@ dinos:
     mutation_recs:
       [
         "Reinforced Tendons",
-        "Gastro",
-        "Congenital",
+        "Gastronomic Regeneration",
+        "Congenital Hypoalgesia",
         "Photosynthetic Tissue",
         "Efficient Digestion",
         "Enlarged Meniscus",
@@ -136,7 +158,14 @@ dinos:
       speed_kmh: 28.5
     pack_size:
       base: 6
-    mutation_recs: ["Enlarged Meniscus", "Reinforced Tendons", "Reniculate Kidneys"]
+    mutation_recs:
+      [
+        "Enlarged Meniscus",
+        "Reinforced Tendons",
+        "Reniculate Kidneys",
+        "Congenital Hypoalgesia",
+        "Gastronomic Regeneration",
+      ]
 
   - name: Troodon
     diet: Carnivore
@@ -151,7 +180,15 @@ dinos:
       speed_kmh: 45
     pack_size:
       base: 10
-    mutation_recs: ["Hemomania", "Hypermetabolic", "Reinforced Tendons"]
+    mutation_recs:
+      [
+        "Hemomania",
+        "Hypermetabolic Inanination",
+        "Reinforced Tendons",
+        "Nocturnal",
+        "Photosynthetic Tissue",
+        "Gastronomic Regeneration",
+      ]
 
   - name: Beipiaosaurus
     diet: Omnivore
@@ -187,12 +224,13 @@ dinos:
       with_social: 12
     mutation_recs:
       [
-        "Nocturnal",
         "Photosynthetic Tissue",
+        "Nocturnal",
+        "Reinforced Tendons",
+        "Congenital Hypoalgesia",
+        "Enlarged Meniscus",
         "Photosynthetic Regeneration",
         "Hypervigilance",
-        "Reinforced Tendons",
-        "Enlarged Meniscus",
       ]
 
   - name: Diabloceratops
@@ -216,7 +254,7 @@ dinos:
         "Xerocole Adaptation",
         "Reabsorption",
         "Sustained Hydration",
-        "Gastro",
+        "Gastronomic Regeneration",
         "Cellular Regeneration",
         "Enhanced Digestion",
         "Epidermal Fibrosis",
@@ -237,7 +275,7 @@ dinos:
     pack_size:
       base: 10
       with_social: 15
-    mutation_recs: ["Photosynthetic", "Reinforced Tendons", "Hypervigilance", "Nocturnal", "Reabsorption"]
+    mutation_recs: ["Photosynthetic Tissue", "Reinforced Tendons", "Hypervigilance", "Nocturnal", "Reabsorption"]
 
   - name: Hypsilophodon
     diet: Herbivore
@@ -254,7 +292,7 @@ dinos:
     pack_size:
       base: 10
       with_social: 15
-    mutation_recs: ["Photosynthetic Tissue", "Nocturnal", "Reinforced Tendons", "water mutations", "Hypervigilance"]
+    mutation_recs: ["Photosynthetic Tissue", "Nocturnal", "Reinforced Tendons", "Hypervigilance", "Xerocole Adaptation"]
 
   - name: Pachycephalosaurus
     diet: Herbivore
@@ -271,7 +309,7 @@ dinos:
     pack_size:
       base: 8
       with_social: 12
-    mutation_recs: ["Hypervigilance"]
+    mutation_recs: [ "Congenital Hypoalgesia", "Tactile Endurance", "Hypervigilance"]
 
   - name: Stegosaurus
     diet: Herbivore
@@ -291,13 +329,14 @@ dinos:
     mutation_recs:
       [
         "Epidermal Fibrosis",
-        "tactile endurance",
+        "Tactile Endurance",
         "Photosynthetic Regeneration",
         "Truculency",
         "Multichambered Lungs",
         "Gastronomic",
         "Photosynthetic Tissue",
         "Nocturnal",
+        "Enhanced Digestion",
       ]
 
   - name: Tenontosaurus
@@ -315,7 +354,8 @@ dinos:
     pack_size:
       base: 8
       with_social: 12
-    mutation_recs: ["Epidermal", "Tactile", "Gastro", "Photosynthetic", "Nocturnal"]
+    mutation_recs:
+      ["Epidermal Fibrosis", "Tactile Endurance", "Gastronomic Regeneration", "Photosynthetic Tissue", "Nocturnal"]
 
   - name: Maiasaura
     diet: Herbivore
@@ -333,7 +373,15 @@ dinos:
       base: 10
       with_social: 15
     mutation_recs:
-      ["Epidermal Fibrosis", "Tactile Endurance", "Truculency", "Photosynthetic Regeneration", "water mutations"]
+      [
+        "Epidermal Fibrosis",
+        "Tactile Endurance",
+        "Photosynthetic Tissue",
+        "Truculency",
+        "Photosynthetic Regeneration",
+        "Xerocole Adaptation",
+        "Reabsorption",
+      ]
 
   - name: Triceratops
     diet: Herbivore
@@ -350,4 +398,14 @@ dinos:
     pack_size:
       base: 4
       with_social: 6
-    mutation_recs: ["placeholder"]
+    mutation_recs:
+      [
+        "Enhanced Digestion",
+        "Tactile Endurance",
+        "Reabsorption",
+        "Xerocole Adaptation",
+        "Gastronomic Regeneration",
+        "Photosynthetic Regeneration",
+        "Photosynthetic Tissue",
+        "Cellular Regeneration",
+      ]
