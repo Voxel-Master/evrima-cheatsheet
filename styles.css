@@ -81,6 +81,9 @@ tbody td {
   border-bottom: 1px solid var(--border);
   vertical-align: middle;
 }
+tbody tr:last-child td {
+  border-bottom: none;
+}
 tbody tr:hover {
   background: #141925;
 }
@@ -252,4 +255,74 @@ td.diet-cell,
 th.info-cell {
   text-align: center;
   width: 44px;
+}
+
+.header-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+.pdf-btn {
+  background: var(--panel, #3d6cf0);  /* default fallback */
+  color: #fff;
+  text-decoration: none;                   /* removes underline */
+  border: 1px solid var(--border);
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  font-weight: 500;
+}
+.pdf-btn:hover {
+  background: var(--accent-btn-hover, #5a82ff);
+}
+
+.pdf-btn .material-symbols-outlined {
+  font-size: 24px;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+/* Print styles */
+@media print {
+  /* Anything with .no-print vanishes when printing */
+  .no-print {
+    display: none !important;
+  }
+
+  /* Good defaults for your page */
+  @page {
+    size: A4 landscape;
+    margin: 0;
+  }
+  body {
+    background: #fff;
+    color: #000;
+    font-size: 14px;
+  }
+  thead th {
+    position: static !important;
+  } /* disable sticky header */
+  #mut-overlay,
+  #th-tip {
+    display: none !important;
+  } /* hide popovers/tooltips */
+  .table-scroll {
+    overflow: visible !important;
+  } /* let table expand */
+  tr,
+  td,
+  th {
+    page-break-inside: avoid;
+  } /* keep rows together */
+  .table-wrapper {
+    box-shadow: none;
+  } /* optional: remove UI chrome */
+  th,
+  td {
+    padding: 5px 10px !important; /* tighter padding */
+    line-height: 1.5; /* reduce vertical spacing */
+  }
 }

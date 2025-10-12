@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>The Isle (Evrima) — Dinosaur Stats</title>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
     <link rel="icon" href="data:image/svg+xml,
   %3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E
     %3Ctext y='.9em' font-size='90'%3E🦖%3C/text%3E
@@ -19,15 +20,23 @@
   </head>
   <body>
     <header class="container">
-      <h1>The Isle (Evrima) — Dinosaur Stats</h1>
-      <p class="subtle">
-        This "cheat sheet" is intended to provide the most important data you might need to look up while playing.
-      </p>
-      <p class="subtle">
-        It is not intended to provide you with all information about each dinosaur, nor general tutorials for the game.
-        For that purpose, try heading over to <a href="https://www.evrimaquickguide.com/">evrimaquickguide.com</a>
-      </p>
-      <details class="note">
+      <div class="header-flex">
+        <h1>The Isle (Evrima) — Dinosaur Stats</h1>
+        <a href="cheatsheet.pdf" class="pdf-btn no-print" download title="Download as PDF">
+          <span class="material-symbols-outlined">download</span>
+          PDF
+        </a>
+      </div>
+      <div class="no-print">
+        <p class="subtle">
+          This "cheat sheet" is intended to provide the most important data you might need to look up while playing.
+        </p>
+        <p class="subtle">
+          It is not intended to provide you with all information about each dinosaur, nor general tutorials for the game.
+          For that purpose, try heading over to <a href="https://www.evrimaquickguide.com/">evrimaquickguide.com</a>
+        </p>
+      </div>
+      <details class="note no-print">
         <summary>Usage notes</summary>
         <div>
           <p>
@@ -46,13 +55,30 @@
           </p>
         </div>
       </details>
+      <details class="note no-print">
+        <summary>Latest Updates</summary>
+        <h4>2025-10-12</h4>
+        <p>
+          <ul>
+            <li>Updated/added mutations</li>
+            <li>Printing is now fine-tuned to generate one well-formatted A4 page</li>
+            <li>Added PDF download button</li>
+          </ul>
+        </p>
+        <h4>2025-10-04</h4>
+        <p>
+          <ul>
+            <li>Initial release</li>
+          </ul>
+        </p>
+      </details>
 
     <main class="container">
       <div class="table-scroll">
         <div class="table-wrapper">
           <table id="dino-table">
             <thead>
-              <tr> 
+              <tr>
                 <th class="th-tooltip sortable" data-sort-key="name" data-tip="Dinosaur species name">Dinosaur</th>
                 <th class="th-tooltip sortable" data-sort-key="diet" data-tip="Dinosaur diet type (carnivore, omnivore, herbivore)">diet</th>
                 <th class="th-tooltip sortable" data-sort-key="gt1" data-tip="Growth % when the 1st mutation unlocks. This is also more or less the begging threshold.">1. muta</th>
@@ -65,7 +91,7 @@
                 <th class="th-tooltip sortable" data-sort-key="speed" data-tip="Adult top speed (km/h). Does not include special speeds like Carno charge or Galli with nutrient speed boost.">Speed</th>
                 <th class="th-tooltip sortable" data-sort-key="pack" data-tip="Pack size limit (base / with Social Behaviour; carnivores don't get SB). Note: I haven't verified how non-integer results of Social Behaviour are rounded, hence the .5 values.">Pack size</th>
                 <th
-                  class="th-tooltip"
+                  class="th-tooltip no-print"
                   data-tip="Tap the ⓘ icon for recommended top mutation picks. Disclaimer: these are only subjective recommendations, and very much work in progress!"
                 >
                   Mutations
@@ -80,7 +106,7 @@
       </div>
     </main>
 
-    <footer class="container footer">
+    <footer class="container footer no-print">
       <a href="https://github.com/Voxel-Master/evrima-cheatsheet">Contribute on GitHub</a>
     </footer>
 

@@ -71,7 +71,7 @@
       <td class="mono">${fmtNum(st.bite_force_N)}</td>
       <td class="mono">${fmtNum(st.speed_kmh)}</td>
       <td class="mono">${fmtPack(pk.base, pk.with_social)}</td>
-      <td class="info-cell" data-tip="Click or tap for details.">${tipsHtml}</td>
+      <td class="info-cell no-print" data-tip="Click or tap for details.">${tipsHtml}</td>
     </tr>`;
   }
 
