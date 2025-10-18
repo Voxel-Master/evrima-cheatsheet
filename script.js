@@ -12,8 +12,8 @@
   let sortState = { key: null, dir: null }; // dir: "asc" | "desc" | null
 
   /* ---------- Formatting helpers ---------- */
-  function fmtDiet(t) {
-    const map = { "Carnivore": "🍖", "Herbivore": "🌿", "Omnivore": "🥚" };
+  function fmtType(t) {
+    const map = { "Carnivore": "🍖", "Herbivore": "🌿", "Omnivore": "🥚", "AI": "🤖"};
     return map[t] || "—";
   }
   function fmtPct(x) {
@@ -58,10 +58,10 @@
       <div class="mut-pop" role="dialog" aria-label="Mutation recommendations" hidden>
         <ul>${topX.map(x => `<li>${x}</li>`).join("")}</ul>
       </div>`;
-
-    return `<tr>
+    const ai_toggle = d.type == "AI" ? `class="no-print"` : ""
+    return `<tr ${ai_toggle}>
       <td>${d.name || "—"}</td>
-      <td class="diet-cell">${fmtDiet(d.diet)}</td>
+      <td class="type-cell">${fmtType(d.type)}</td>
       <td class="mono">${fmtPct(gt.first_mutation)}</td>
       <td class="mono">${fmtPct(gt.second_mutation)}</td>
       <td class="mono">${fmtPct(gt.third_mutation)}</td>
@@ -70,6 +70,7 @@
       <td class="mono">${fmtNum(st.weight_kg)}</td>
       <td class="mono">${fmtNum(st.bite_force_N)}</td>
       <td class="mono">${fmtNum(st.speed_kmh)}</td>
+      <td class="mono">${fmtPct(st.carry_weight_perc)}</td>
       <td class="mono">${fmtPack(pk.base, pk.with_social)}</td>
       <td class="info-cell no-print" data-tip="Click or tap for details.">${tipsHtml}</td>
     </tr>`;
@@ -82,7 +83,7 @@
     const pk = d.pack_size || {};
     switch (key) {
       case "name": return (d.name || "").toLowerCase();
-      case "diet": return (d.diet || "").toLowerCase();
+      case "type": return (d.type || "").toLowerCase();
       case "gt1": return normNum(gt.first_mutation);
       case "gt2": return normNum(gt.second_mutation);
       case "gt3": return normNum(gt.third_mutation);
@@ -91,6 +92,7 @@
       case "weight": return normNum(st.weight_kg);
       case "bite": return normNum(st.bite_force_N);
       case "speed": return normNum(st.speed_kmh);
+      case "carry": return normNum(st.carry_weight_perc);
       case "pack": return [normNum(pk.base), normNum(pk.with_social)];
       default: return null;
     }

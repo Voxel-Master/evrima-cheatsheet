@@ -53,6 +53,18 @@
             You can click columns to sort, and hovering over them shows a tooltip with a short explanation.
             Click the ⓘ icon to show mutations.
           </p>
+
+          <p>
+            AI stats are approximate, since they can only be roughly determined by experimentation.
+
+            Unfortunately, results for AI damage in particular were extremely inconsistent. This is likely
+            because the player takes more damage depending on where they get hit (head, body, tail), and it's
+            hard to tell where you are hit. Also, I don't know the exact damage multipliers for each body
+            part, especially considering they are not the same for each dino.<br/>
+            There may also be other factors affecting the damage measurement.
+
+            AI weight (= HP) should be fairly accurate, excluding fish or if listed with a question mark.
+          </p>
         </div>
       </details>
       <details class="note no-print">
@@ -72,6 +84,57 @@
           </ul>
         </p>
       </details>
+      <details class="note no-print">
+        <summary>Trivia</summary>
+        <h4>Carrying capacity</h4>
+        <p>
+          The maximum weight of a corpse that still allows you to carry it while running is determined via a
+          fixed percentage for each dinosaur (see the respective column).
+          However, experimenting with this behaviour has shown that the general rule of weight = HP is not
+          consistent for some of the smaller AI.
+          For example, carno can carry chickens once at 60kg, and rabbits once you weigh 80kg.
+          This implies a weight of 6kg and 8kg for chickens and rabbits respectively, but you need more bite
+          force than that to kill one. In the carry weight column, these different weight and HP values are
+          marked by adding the actual HP (accuracy is subject to measuring errors) in parentheses.
+        </p>
+        <p>
+          Side note: you can't carry corpses at all when below your freshspawn growth threshold,
+          just like you can't eat on your own and require feeding at that growth stage.
+        </p>
+        <p>Some notes on corpse carry percentages beyond the info in the carry weight column:
+          <ul>
+            <li>
+              Deinosuchus' 25% carry percentage differs from the max grab weight for live dinos, which is
+              50% for victims on land and 75% for those that are swimming.
+            </li>
+            <li>Pteranodon's carry weight includes both running and flying, and is unusually high (relatively
+              speaking) meaning you can steal chickens at 12kg already.</li>
+            <li>Troodon: 10% (this means you need to be fully grown just to carry a chicken)</li>
+            <li>Galli: 10% (only applies to frogs and crabs)</li>
+            <li>Beipi: 10% (only applies to frogs and crabs; when you can carry either, you can also eat it (whole))</li>
+          </ul>
+        </p>
+        <h4>Gallimimus egg theft</h4>
+        <p>
+          Gallimimus is explicitly described as an egg thief, which means they're able to eat eggs. However,
+          you're not quite as adept at eating eggs as carnivores.
+          Specifically, you can only grab eggs directly from a nest and eat them right away. You cannot pick
+          them back up if you drop them, and you also cannot eat from eggs on the ground. In other words,
+          if you steal an egg and drop it, you will not be able to eat it or interact with it in any way.
+        </p>
+        <h4>Fish</h4>
+        <p>
+          Unlike other AI, fish size is not fixed. Instead, it depends on the size of the dino catching it.
+          This is especially true for schooling fish, which can weigh substantially less than one kilogram if
+          caught by a freshly hatched (not spawned) deinosuchus, and up to around 25-30kg if caught by an
+          adult deinosuchus.
+        </p>
+        <p>
+          Elite fish also vary in size, but the difference is not quite as pronounced here, with much smaller
+          weight spans. It's also unclear if the size difference is caused by the size of the dino that
+          caught it, or if they simply have varying weights by nature.
+        </p>
+      </details>
 
     <main class="container">
       <div class="table-scroll">
@@ -80,15 +143,16 @@
             <thead>
               <tr>
                 <th class="th-tooltip sortable" data-sort-key="name" data-tip="Dinosaur species name">Dinosaur</th>
-                <th class="th-tooltip sortable" data-sort-key="diet" data-tip="Dinosaur diet type (carnivore, omnivore, herbivore)">Diet</th>
+                <th class="th-tooltip sortable" data-sort-key="type" data-tip="Dinosaur type (carnivore, omnivore, herbivore, AI)">Type</th>
                 <th class="th-tooltip sortable" data-sort-key="gt1" data-tip="Growth % when the 1st mutation unlocks. This is also more or less the begging threshold.">1. muta</th>
                 <th class="th-tooltip sortable" data-sort-key="gt2" data-tip="Growth % when the 2nd mutation unlocks">2. muta</th>
                 <th class="th-tooltip sortable" data-sort-key="gt3" data-tip="Growth % when the 3rd mutation unlocks">3. muta</th>
-                <th class="th-tooltip sortable" data-sort-key="sancm" data-tip="Growth % threshold for eating sanctuary mushrooms (not applicable for carnivores)">Sanctuary 🍄</th>
-                <th class="th-tooltip sortable" data-sort-key="sanc" data-tip="Growth % after which you can no longer enter sanctuaries. 'No value' means you're allowed in even as adults.">Sanctuary</th>
-                <th class="th-tooltip sortable" data-sort-key="weight" data-tip="Adult weight in kg">Weight</th>
+                <th class="th-tooltip sortable" data-sort-key="sancm" data-tip="Growth % threshold for eating sanctuary mushrooms (not applicable for carnivores)">Sanct. 🍄</th>
+                <th class="th-tooltip sortable" data-sort-key="sanc" data-tip="Growth % after which you can no longer enter sanctuaries. 'No value' means you're allowed in even as adults.">Sanct.</th>
+                <th class="th-tooltip sortable" data-sort-key="weight" data-tip="Adult weight in kg (HP in parentheses, if it differs)">Weight</th>
                 <th class="th-tooltip sortable" data-sort-key="bite" data-tip="Adult bite force (N). This only refers to the literal bite force, not your actual most useful attack (see for example stego)">Bite</th>
                 <th class="th-tooltip sortable" data-sort-key="speed" data-tip="Adult top speed (km/h). Does not include special speeds like Carno charge or Galli with nutrient speed boost.">Speed</th>
+                <th class="th-tooltip sortable" data-sort-key="carry" data-tip="Percentage of own body weight that can be carried while running (i.e. not dragged)">Carry %</th>
                 <th class="th-tooltip sortable" data-sort-key="pack" data-tip="Pack size limit (base / with Social Behaviour; carnivores don't get SB). Note: I haven't verified how non-integer results of Social Behaviour are rounded, hence the .5 values.">Pack size</th>
                 <th
                   class="th-tooltip no-print"

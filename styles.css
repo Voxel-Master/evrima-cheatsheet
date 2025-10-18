@@ -251,7 +251,7 @@ th.sortable[data-sort="none"]::after {
 }
 
 /* optional: tidy up the Type column */
-td.diet-cell,
+td.type-cell,
 th.info-cell {
   text-align: center;
   width: 44px;

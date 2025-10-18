@@ -1,6 +1,6 @@
 dinos:
-  - name: Tyrannosaurus (unverified)
-    diet: Carnivore
+  - name: Tyrannosaurus (placeholder values)
+    type: Carnivore
     growth_thresholds:
       first_mutation: 0
       second_mutation: 0
@@ -10,12 +10,13 @@ dinos:
       weight_kg: 9400
       bite_force_N: 850
       speed_kmh: 29
+      carry_weight_perc: 0
     pack_size:
       base: 3
     mutation_recs: ["tbd"]
 
   - name: Carnotaurus
-    diet: Carnivore
+    type: Carnivore
     growth_thresholds:
       first_mutation: 8.0
       second_mutation: 44.8
@@ -25,6 +26,7 @@ dinos:
       weight_kg: 1300
       bite_force_N: 150
       speed_kmh: 49.5
+      carry_weight_perc: 10
     pack_size:
       base: 3
     mutation_recs:
@@ -37,7 +39,7 @@ dinos:
       ]
 
   - name: Ceratosaurus
-    diet: Carnivore
+    type: Carnivore
     growth_thresholds:
       first_mutation: 7.4
       second_mutation: 33.4
@@ -47,6 +49,7 @@ dinos:
       weight_kg: 1300
       bite_force_N: 150
       speed_kmh: 40.2
+      carry_weight_perc: 25
     pack_size:
       base: 4
     mutation_recs:
@@ -61,16 +64,17 @@ dinos:
       ]
 
   - name: Deinosuchus
-    diet: Carnivore
+    type: Carnivore
     growth_thresholds:
       first_mutation: 4.5
       second_mutation: 31.8
       third_mutation: 100
-      sanctuary_lockout: 0 # yes, crocs are always banned from sanctuaries, even at 0% growth
+      sanctuary_lockout: 0 # yes, crocs are always banned from sanctuaries, even at 0 growth
     stats:
       weight_kg: 8000
       bite_force_N: 500
       speed_kmh: 18
+      carry_weight_perc: 25
     pack_size:
       base: 2
     mutation_recs:
@@ -84,7 +88,7 @@ dinos:
       ]
 
   - name: Dilophosaurus
-    diet: Carnivore
+    type: Carnivore
     growth_thresholds:
       first_mutation: 10.6
       second_mutation: 40.4
@@ -94,12 +98,13 @@ dinos:
       weight_kg: 700
       bite_force_N: 85
       speed_kmh: 47.5
+      carry_weight_perc: 10
     pack_size:
       base: 4
     mutation_recs: ["Congenital Hypoalgesia", "Gastronomic Regeneration", "Nocturnal", "Hemomania", "Photosynthetic Tissue", "Hypermetabolic Inanination"]
 
   - name: Herrerasaurus
-    diet: Carnivore
+    type: Carnivore
     growth_thresholds:
       first_mutation: 10.1
       second_mutation: 32.6
@@ -109,6 +114,7 @@ dinos:
       weight_kg: 175
       bite_force_N: 30
       speed_kmh: 45
+      carry_weight_perc: 10
     pack_size:
       base: 8
     mutation_recs:
@@ -123,7 +129,7 @@ dinos:
       ]
 
   - name: Omniraptor
-    diet: Carnivore
+    type: Carnivore
     growth_thresholds:
       first_mutation: 10.6
       second_mutation: 36.2
@@ -133,6 +139,7 @@ dinos:
       weight_kg: 450
       bite_force_N: 65
       speed_kmh: 46.8
+      carry_weight_perc: 10
     pack_size:
       base: 8
     mutation_recs:
@@ -147,7 +154,7 @@ dinos:
       ]
 
   - name: Pteranodon
-    diet: Carnivore
+    type: Carnivore
     growth_thresholds:
       first_mutation: 13.2
       second_mutation: 38.8
@@ -157,6 +164,7 @@ dinos:
       weight_kg: 45
       bite_force_N: 20
       speed_kmh: 28.5
+      carry_weight_perc: 50
     pack_size:
       base: 6
     mutation_recs:
@@ -169,7 +177,7 @@ dinos:
       ]
 
   - name: Troodon
-    diet: Carnivore
+    type: Carnivore
     growth_thresholds:
       first_mutation: 13.8
       second_mutation: 48.3
@@ -179,6 +187,7 @@ dinos:
       weight_kg: 60
       bite_force_N: 15
       speed_kmh: 45
+      carry_weight_perc: 10
     pack_size:
       base: 10
     mutation_recs:
@@ -192,7 +201,7 @@ dinos:
       ]
 
   - name: Beipiaosaurus
-    diet: Omnivore
+    type: Omnivore
     growth_thresholds:
       first_mutation: 14.1
       second_mutation: 53.1
@@ -203,13 +212,14 @@ dinos:
       weight_kg: 90
       bite_force_N: 20
       speed_kmh: 32
+      carry_weight_perc: 10
     pack_size:
       base: 12
       with_social: 18
     mutation_recs: ["Hydrodynamic", "Hypervigilance", "Reinforced Tendons"]
 
   - name: Gallimimus
-    diet: Omnivore
+    type: Omnivore
     growth_thresholds:
       first_mutation: 7.3
       second_mutation: 31.7
@@ -220,6 +230,7 @@ dinos:
       weight_kg: 490
       bite_force_N: 25
       speed_kmh: 49.7
+      carry_weight_perc: 10
     pack_size:
       base: 8
       with_social: 12
@@ -235,7 +246,7 @@ dinos:
       ]
 
   - name: Diabloceratops
-    diet: Herbivore
+    type: Herbivore
     growth_thresholds:
       first_mutation: 6.0
       second_mutation: 32.8
@@ -262,7 +273,7 @@ dinos:
       ]
 
   - name: Dryosaurus
-    diet: Herbivore
+    type: Herbivore
     growth_thresholds:
       first_mutation: 12.2
       second_mutation: 52.7
@@ -279,7 +290,7 @@ dinos:
     mutation_recs: ["Photosynthetic Tissue", "Reinforced Tendons", "Congenital Hypoalgesia", "Nocturnal", "Reabsorption", "Xerocole Adaptation", "Hypervigilance"]
 
   - name: Hypsilophodon
-    diet: Herbivore
+    type: Herbivore
     growth_thresholds:
       first_mutation: 31.8
       second_mutation: 65.9
@@ -296,7 +307,7 @@ dinos:
     mutation_recs: ["Photosynthetic Tissue", "Nocturnal", "Reinforced Tendons", "Hypervigilance", "Xerocole Adaptation"]
 
   - name: Pachycephalosaurus
-    diet: Herbivore
+    type: Herbivore
     growth_thresholds:
       first_mutation: 11.6
       second_mutation: 34.9
@@ -313,7 +324,7 @@ dinos:
     mutation_recs: [ "Congenital Hypoalgesia", "Tactile Endurance", "Hypervigilance"]
 
   - name: Stegosaurus
-    diet: Herbivore
+    type: Herbivore
     growth_thresholds:
       first_mutation: 3.8
       second_mutation: 51.9
@@ -341,7 +352,7 @@ dinos:
       ]
 
   - name: Tenontosaurus
-    diet: Herbivore
+    type: Herbivore
     growth_thresholds:
       first_mutation: 6.4
       second_mutation: 35.6
@@ -359,7 +370,7 @@ dinos:
       ["Epidermal Fibrosis", "Tactile Endurance", "Gastronomic Regeneration", "Photosynthetic Tissue", "Nocturnal"]
 
   - name: Maiasaura
-    diet: Herbivore
+    type: Herbivore
     growth_thresholds:
       first_mutation: 9.1
       second_mutation: 45.5
@@ -385,7 +396,7 @@ dinos:
       ]
 
   - name: Triceratops
-    diet: Herbivore
+    type: Herbivore
     growth_thresholds:
       first_mutation: 1.4
       second_mutation: 42.9
@@ -410,3 +421,80 @@ dinos:
         "Photosynthetic Tissue",
         "Cellular Regeneration",
       ]
+
+  - name: Sea Turtle
+    type: AI
+    stats:
+      weight_kg: 180
+      bite_force_N: null
+      speed_kmh: null
+
+  - name: Boar
+    type: AI
+    stats:
+      weight_kg: 125 # >97
+      bite_force_N: 15-50?
+      speed_kmh: null
+
+  - name: Deer
+    type: AI
+    stats:
+      weight_kg: 90
+      bite_force_N: '?'
+      speed_kmh: null
+
+  - name: Taco
+    type: AI
+    stats:
+      weight_kg: 22.5
+      bite_force_N: null
+      speed_kmh: null
+
+  - name: Rabbit
+    type: AI
+    stats:
+      weight_kg: 8 (20)
+      bite_force_N: null
+      speed_kmh: null
+
+  - name: Chicken
+    type: AI
+    stats:
+      weight_kg: 6 (10)
+      bite_force_N: 0.1?
+      speed_kmh: null
+
+  - name: Crab
+    type: AI
+    stats:
+      weight_kg: 4 (1.2)
+      bite_force_N: null
+      speed_kmh: null
+
+  - name: Bullfrog
+    type: AI
+    stats:
+      weight_kg: 1.5 (?)
+      bite_force_N: null
+      speed_kmh: null
+
+  - name: Fish
+    type: AI
+    stats:
+      weight_kg: 0.1-26.5
+      bite_force_N: null
+      speed_kmh: null
+
+  - name: Elite Fish (Coelacanth)
+    type: AI
+    stats:
+      weight_kg: 75-90
+      bite_force_N: '?'
+      speed_kmh: null
+
+  - name: Elite Fish (Catfish)
+    type: AI
+    stats:
+      weight_kg: 130-140
+      bite_force_N: '?'
+      speed_kmh: null
