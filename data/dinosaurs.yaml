@@ -137,11 +137,12 @@ dinos:
       base: 8
     mutation_recs:
       [
-        "Reinforced Tendons",
-        "Gastronomic Regeneration",
-        "Congenital Hypoalgesia",
         "Photosynthetic Tissue",
-        "Efficient Digestion",
+        "Gastronomic Regeneration",
+        "Reinforced Tendons",
+        "Congenital Hypoalgesia",
+        "Nocturnal",
+        "Hypermetabolic Inanination",
         "Enlarged Meniscus",
       ]
 
@@ -275,7 +276,7 @@ dinos:
     pack_size:
       base: 10
       with_social: 15
-    mutation_recs: ["Photosynthetic Tissue", "Reinforced Tendons", "Hypervigilance", "Nocturnal", "Reabsorption"]
+    mutation_recs: ["Photosynthetic Tissue", "Reinforced Tendons", "Congenital Hypoalgesia", "Nocturnal", "Reabsorption", "Xerocole Adaptation", "Hypervigilance"]
 
   - name: Hypsilophodon
     diet: Herbivore
