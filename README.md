@@ -33,3 +33,11 @@ I'm very much not accustomed to it. As such, large parts of the HTML/CSS/JS code
 with help from ChatGPT. That means the code is probably a** in terms of readability (or at least that's what
 it seems like to me, but I have never found web code to be particularly readable anyway).<br>
 However, I really just care about the end result here. If the code bothers you, feel free to contribute ;)
+
+## Pushing code
+
+Move the pre-commit file in the project root into your git hooks.
+This will automatically update `cheatsheet.pdf` with the latest version of the website every time you commit.
+
+Once this hook is set up, you can only commit while your local server is running. Otherwise the PDF can't be
+generated (thus blocking the commit), since it uses a headless browser to print the page at `localhost:5500`.
