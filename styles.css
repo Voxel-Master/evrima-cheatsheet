@@ -223,9 +223,11 @@ kbd {
   display: block;
 }
 
-.footer {
+footer {
   color: var(--muted);
   font-size: 12px;
+  display: flex;
+  gap: 1rem;
 }
 
 /* Global mutation overlay that lives outside the table */
