@@ -28,28 +28,70 @@ h1 {
   font-size: 20px;
   margin: 8px 0 4px;
 }
-.subtle {
-  color: var(--muted);
-  margin: 0 0 8px;
-}
-.note {
+
+.info-tabs {
+  margin-top: 10px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
   background: var(--panel);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 8px 12px;
-  margin: 8px 0;
+  margin-bottom: 16px;
+  overflow: hidden;
+  transition: border-color 0.2s;
 }
-.note summary {
+
+
+/* Hide content section completely unless active */
+.info-tabs:not(.has-active) .tab-contents {
+  display: none;
+}
+
+.info-tabs .tab-titles {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-bottom: 1px solid var(--border);
+  overflow-x: auto;
+}
+
+.info-tabs .tab-titles li {
+  padding: 6px 14px;
   cursor: pointer;
-  color: var(--accent);
+  white-space: nowrap;
+  color: var(--muted);
+  user-select: none;
+  transition: background 0.2s, color 0.2s;
+  border-bottom: 2px solid transparent;
 }
-pre {
-  background: #0b0e13;
-  border: 1px solid var(--border);
-  padding: 8px;
-  border-radius: 8px;
-  overflow: auto;
+
+.info-tabs .tab-titles li:hover {
+  background: var(--border);
+  color: var(--ink);
 }
+
+.info-tabs .tab-titles li.active {
+  color: var(--ink);
+  border-bottom-color: var(--ink);
+}
+
+.info-tabs .tab-contents {
+  padding: 10px 14px;
+}
+
+.info-tabs .tab {
+  display: none;
+  animation: fadeIn 0.15s ease-in-out;
+}
+
+.info-tabs .tab.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 
 /* inner wrapper should not clip tooltips/popups */
 .table-wrapper {
@@ -251,7 +293,7 @@ th.sortable[data-sort="none"]::after {
 }
 
 /* optional: tidy up the Type column */
-td.type-cell,
+td.diet-cell,
 th.info-cell {
   text-align: center;
   width: 44px;

@@ -308,3 +308,33 @@
   attachInfoHandlers();
   attachHeaderTips();
 })();
+
+// Tabs setup (requires jQuery)
+$(function() {
+  const $tabs = $(".info-tabs");
+  const $titles = $tabs.find(".tab-titles li");
+  const $content = $tabs.find(".tab");
+
+  $titles.on("click", function() {
+    const $this = $(this);
+    const tab = $this.data("tab");
+    const isActive = $this.hasClass("active");
+
+    // If active -> deactivate all
+    if (isActive) {
+      $titles.removeClass("active");
+      $content.removeClass("active");
+      $tabs.removeClass("has-active");
+      return;
+    }
+
+    // Activate clicked tab, deactivate others
+    $titles.removeClass("active");
+    $this.addClass("active");
+    $content.removeClass("active");
+    $(`#tab-${tab}`).addClass("active");
+
+    // Flag container so it shows border only when something is open
+    $tabs.addClass("has-active");
+  });
+});
