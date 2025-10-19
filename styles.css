@@ -39,7 +39,6 @@ h1 {
   transition: border-color 0.2s;
 }
 
-
 /* Hide content section completely unless active */
 .info-tabs:not(.has-active) .tab-contents {
   display: none;
@@ -88,10 +87,13 @@ h1 {
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
-
 
 /* inner wrapper should not clip tooltips/popups */
 .table-wrapper {
@@ -223,11 +225,21 @@ kbd {
   display: block;
 }
 
-footer {
-  color: var(--muted);
-  font-size: 12px;
+.image-w-link {
   display: flex;
-  gap: 1rem;
+  align-items: center;
+  vertical-align: middle;
+}
+img {
+  vertical-align: middle;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+}
+a {
+    color: white;
+}
+a:not(.pdf-btn):visited {
+    color: #FFD230;
 }
 
 /* Global mutation overlay that lives outside the table */
@@ -308,9 +320,9 @@ th.info-cell {
   gap: 1rem;
 }
 .pdf-btn {
-  background: var(--panel, #3d6cf0);  /* default fallback */
+  background: var(--panel, #3d6cf0);
   color: #fff;
-  text-decoration: none;                   /* removes underline */
+  text-decoration: none;
   border: 1px solid var(--border);
   padding: 6px 12px;
   border-radius: 8px;
