@@ -236,10 +236,15 @@ img {
   margin-right: 0.5rem;
 }
 a {
-    color: white;
+  color: white;
 }
 a:not(.pdf-btn):visited {
-    color: #FFD230;
+  color: #ffd230;
+}
+
+footer {
+  display: flex;
+  gap: 1rem;
 }
 
 /* Global mutation overlay that lives outside the table */
