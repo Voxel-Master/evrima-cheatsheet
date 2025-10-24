@@ -1,16 +1,32 @@
 dinos:
-  - name: Tyrannosaurus (placeholder values)
+  - name: Tyrannosaurus (WIP/HT)
     type: Carnivore
     growth_thresholds:
-      first_mutation: 0
-      second_mutation: 0
+      first_mutation: 0 # tbd
+      second_mutation: 0 # tbd
       third_mutation: 100
-      sanctuary_lockout: 0
+      sanctuary_lockout: 0 # tbd
     stats:
-      weight_kg: 9400
+      weight_kg: 9350
       bite_force_N: 850
       speed_kmh: 29
-      carry_weight_perc: 0
+      carry_weight_perc: 0 # tbd
+    pack_size:
+      base: 2
+    mutation_recs: ["tbd"]
+
+  - name: Allosaurus (WIP/HT)
+    type: Carnivore
+    growth_thresholds:
+      first_mutation: 0 # tbd
+      second_mutation: 0 # tbd
+      third_mutation: 100
+      sanctuary_lockout: 0 # tbd
+    stats:
+      weight_kg: 2793
+      bite_force_N: 175
+      speed_kmh: 35 # speed in main menu is given on a different scale. Multiplied by 0.036 to get kmh.
+      carry_weight_perc: 0 # tbd
     pack_size:
       base: 3
     mutation_recs: ["tbd"]
@@ -69,7 +85,7 @@ dinos:
       first_mutation: 4.5
       second_mutation: 31.8
       third_mutation: 100
-      sanctuary_lockout: 0 # yes, crocs are always banned from sanctuaries, even at 0 growth
+      sanctuary_lockout: 0 # yes, crocs are always banned from sanctuaries, even at 0% growth
     stats:
       weight_kg: 8000
       bite_force_N: 500
@@ -440,6 +456,13 @@ dinos:
     type: AI
     stats:
       weight_kg: 90
+      bite_force_N: '?'
+      speed_kmh: null
+
+  - name: Goat
+    type: AI
+    stats:
+      weight_kg: '?'
       bite_force_N: '?'
       speed_kmh: null
 
