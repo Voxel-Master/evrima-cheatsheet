@@ -11,7 +11,7 @@
 const urlParams = new URLSearchParams();
 const rawUrlParams = new URLSearchParams(window.location.search);
 for (const [name, value] of rawUrlParams) {
-    urlParams.append(name.toLowerCase(), value);
+  urlParams.append(name.toLowerCase(), value);
 }
 const versionParam = urlParams.get("version");
 version = versionParam ? (versionParam.includes("hordetest") ? "hordetest" : "evrima") : "evrima";
@@ -29,6 +29,9 @@ window.history.replaceState({}, "", newUrl);
 
 
 (function () {
+  // Cached YAML payloads by filename to avoid refetch on toggles
+  const yamlCache = new Map();
+
   const tbody = document.querySelector("#dino-table tbody");
   let allData = [];                    // Keeps original YAML order
   let sortState = { key: null, dir: null }; // dir: "asc" | "desc" | null
@@ -122,11 +125,11 @@ window.history.replaceState({}, "", newUrl);
     }
   }
 
-  function isNullish(v){
+  function isNullish(v) {
     return v === null || v === undefined || v !== v || v === "" || v === "—";
   }
 
-  function cmpCore(a, b){
+  function cmpCore(a, b) {
     if (Array.isArray(a) || Array.isArray(b)) {
       const A = Array.isArray(a) ? a : [a];
       const B = Array.isArray(b) ? b : [b];
@@ -147,7 +150,7 @@ window.history.replaceState({}, "", newUrl);
   }
 
   // Direction-aware compare that ALWAYS sends nullish to bottom
-  function compareForSort(a, b, dir){
+  function compareForSort(a, b, dir) {
     const aN = isNullish(a), bN = isNullish(b);
     if (aN !== bN) return aN ? 1 : -1;
     const base = cmpCore(a, b);
@@ -319,17 +322,26 @@ window.history.replaceState({}, "", newUrl);
     // No need to re-bind global delegation handlers each render
   }
 
+
   async function loadYaml(fileName) {
     try {
+      if (yamlCache.has(fileName)) {
+        const dinos = yamlCache.get(fileName);
+        allData = dinos.map((d, i) => ({ ...d, _idx: i }));
+        renderTable();
+        return;
+      }
       const res = await fetch(fileName, { cache: "no-cache" });
       const text = await res.text();
       const data = jsyaml.load(text);
       const dinos = (data && data.dinos) ? data.dinos : [];
+      yamlCache.set(fileName, dinos);
       allData = dinos.map((d, i) => ({ ...d, _idx: i })); // remember original order
       renderTable();
     } catch (err) {
       console.error("Failed to load YAML:", err);
-      tbody.innerHTML = `<tr><td colspan="10">Could not load dinosaur list.</td></tr>`;
+      tbody.innerHTML = `<tr><td colspan="10">Could not load <code>${fileName}</code>.</td></tr>`;
+
     }
   }
 
@@ -367,7 +379,7 @@ window.history.replaceState({}, "", newUrl);
       $tabs.addClass("has-active");
     });
 
-    $(".toggle-switch").each(function() {
+    $(".toggle-switch").each(function () {
       const v = $(this).data("var");
       const onVal = $(this).data("on");
       const offVal = $(this).data("off");
@@ -384,7 +396,7 @@ window.history.replaceState({}, "", newUrl);
     });
 
     // --- React to user toggling ---
-    $(".toggle-switch").on("change", function() {
+    $(".toggle-switch").on("change", function () {
       console.log("toggleswitch")
       const $sw = $(this);
       const v = $sw.data("var");
