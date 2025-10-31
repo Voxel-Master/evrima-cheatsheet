@@ -1,36 +1,4 @@
 dinos:
-  - name: Tyrannosaurus (WIP/HT)
-    type: Carnivore
-    growth_thresholds:
-      first_mutation: 0 # tbd
-      second_mutation: 0 # tbd
-      third_mutation: 100
-      sanctuary_lockout: 0 # tbd
-    stats:
-      weight_kg: 9350
-      bite_force_N: 850
-      speed_kmh: 29
-      carry_weight_perc: 0 # tbd
-    pack_size:
-      base: 2
-    mutation_recs: ["tbd"]
-
-  - name: Allosaurus (WIP/HT)
-    type: Carnivore
-    growth_thresholds:
-      first_mutation: 0 # tbd
-      second_mutation: 0 # tbd
-      third_mutation: 100
-      sanctuary_lockout: 0 # tbd
-    stats:
-      weight_kg: 2793
-      bite_force_N: 175
-      speed_kmh: 35 # speed in main menu is given on a different scale. Multiplied by 0.036 to get kmh.
-      carry_weight_perc: 0 # tbd
-    pack_size:
-      base: 3
-    mutation_recs: ["tbd"]
-
   - name: Carnotaurus
     type: Carnivore
     growth_thresholds:
@@ -314,7 +282,7 @@ dinos:
       sanctuary_mushroom: 66
       sanctuary_lockout: null
     stats:
-      weight_kg: 20
+      weight_kg: 23
       bite_force_N: 2
       speed_kmh: 39.6
     pack_size:
@@ -448,7 +416,7 @@ dinos:
   - name: Boar
     type: AI
     stats:
-      weight_kg: 125 # >97
+      weight_kg: 125
       bite_force_N: 15-50?
       speed_kmh: null
 

@@ -6,6 +6,28 @@
    - Click-to-sort headers with 3-state cycle: asc -> desc -> default (original YAML order)
 */
 
+
+
+const urlParams = new URLSearchParams();
+const rawUrlParams = new URLSearchParams(window.location.search);
+for (const [name, value] of rawUrlParams) {
+    urlParams.append(name.toLowerCase(), value);
+}
+const versionParam = urlParams.get("version");
+version = versionParam ? (versionParam.includes("hordetest") ? "hordetest" : "evrima") : "evrima";
+document.documentElement.dataset.version = version
+
+const showAiParam = urlParams.get("ai");
+showAI = showAiParam ? (showAiParam.toLowerCase() === "true" ? true : false) : false;
+document.documentElement.dataset.ai = showAI;
+
+
+urlParams.set("version", version);
+urlParams.set("ai", showAI);
+const newUrl = window.location.pathname + "?" + urlParams.toString();
+window.history.replaceState({}, "", newUrl);
+
+
 (function () {
   const tbody = document.querySelector("#dino-table tbody");
   let allData = [];                    // Keeps original YAML order
@@ -13,7 +35,7 @@
 
   /* ---------- Formatting helpers ---------- */
   function fmtType(t) {
-    const map = { "Carnivore": "🍖", "Herbivore": "🌿", "Omnivore": "🥚", "AI": "🤖"};
+    const map = { "Carnivore": "🍖", "Herbivore": "🌿", "Omnivore": "🥚", "AI": "🤖" };
     return map[t] || "—";
   }
   function fmtPct(x) {
@@ -58,16 +80,17 @@
       <div class="mut-pop" role="dialog" aria-label="Mutation recommendations" hidden>
         <ul>${topX.map(x => `<li>${x}</li>`).join("")}</ul>
       </div>`;
-    const ai_toggle = d.type == "AI" ? `class="no-print"` : ""
+    const ai_toggle = d.type == "AI" ? `class="ai no-print"` : ""
     return `<tr ${ai_toggle}>
       <td>${d.name || "—"}</td>
       <td class="type-cell">${fmtType(d.type)}</td>
-      <td class="mono">${fmtPct(gt.first_mutation)}</td>
-      <td class="mono">${fmtPct(gt.second_mutation)}</td>
-      <td class="mono">${fmtPct(gt.third_mutation)}</td>
-      <td class="mono">${fmtPct(gt.sanctuary_mushroom)}</td>
-      <td class="mono">${fmtPct(gt.sanctuary_lockout)}</td>
+      <td class="mono evrima">${fmtPct(gt.first_mutation)}</td>
+      <td class="mono evrima">${fmtPct(gt.second_mutation)}</td>
+      <td class="mono evrima">${fmtPct(gt.third_mutation)}</td>
+      <td class="mono evrima">${fmtPct(gt.sanctuary_mushroom)}</td>
+      <td class="mono evrima">${fmtPct(gt.sanctuary_lockout)}</td>
       <td class="mono">${fmtNum(st.weight_kg)}</td>
+      <td class="mono hordetest">${fmtNum(st.weight_prime)}</td>
       <td class="mono">${fmtNum(st.bite_force_N)}</td>
       <td class="mono">${fmtNum(st.speed_kmh)}</td>
       <td class="mono">${fmtPct(st.carry_weight_perc)}</td>
@@ -90,6 +113,7 @@
       case "sancm": return normNum(gt.sanctuary_mushroom);
       case "sanc": return normNum(gt.sanctuary_lockout);
       case "weight": return normNum(st.weight_kg);
+      case "primeweight": return normNum(st.weight_prime);
       case "bite": return normNum(st.bite_force_N);
       case "speed": return normNum(st.speed_kmh);
       case "carry": return normNum(st.carry_weight_perc);
@@ -288,9 +312,9 @@
     // No need to re-bind global delegation handlers each render
   }
 
-  async function loadYaml() {
+  async function loadYaml(fileName) {
     try {
-      const res = await fetch("data/dinosaurs.yaml", { cache: "no-cache" });
+      const res = await fetch(fileName, { cache: "no-cache" });
       const text = await res.text();
       const data = jsyaml.load(text);
       const dinos = (data && data.dinos) ? data.dinos : [];
@@ -298,43 +322,80 @@
       renderTable();
     } catch (err) {
       console.error("Failed to load YAML:", err);
-      tbody.innerHTML = `<tr><td colspan="10">Could not load <code>data/dinosaurs.yaml</code>.</td></tr>`;
+      tbody.innerHTML = `<tr><td colspan="10">Could not load dinosaur list.</td></tr>`;
     }
   }
 
-  // Boot
-  loadYaml();
+  loadYaml(`data/dinosaurs_${version}.yaml`);
   attachSortHandlers();
   attachInfoHandlers();
   attachHeaderTips();
-})();
 
-// Tabs setup (requires jQuery)
-$(function() {
-  const $tabs = $(".info-tabs");
-  const $titles = $tabs.find(".tab-titles li");
-  const $content = $tabs.find(".tab");
+  // Tabs setup (requires jQuery)
+  $(function () {
+    const $tabs = $(".info-tabs");
+    const $titles = $tabs.find(".tab-titles li");
+    const $content = $tabs.find(".tab");
 
-  $titles.on("click", function() {
-    const $this = $(this);
-    const tab = $this.data("tab");
-    const isActive = $this.hasClass("active");
+    $titles.on("click", function () {
+      const $this = $(this);
+      const tab = $this.data("tab");
+      const isActive = $this.hasClass("active");
 
-    // If active -> deactivate all
-    if (isActive) {
+      // If active -> deactivate all
+      if (isActive) {
+        $titles.removeClass("active");
+        $content.removeClass("active");
+        $tabs.removeClass("has-active");
+        return;
+      }
+
+      // Activate clicked tab, deactivate others
       $titles.removeClass("active");
+      $this.addClass("active");
       $content.removeClass("active");
-      $tabs.removeClass("has-active");
-      return;
-    }
+      $(`#tab-${tab}`).addClass("active");
 
-    // Activate clicked tab, deactivate others
-    $titles.removeClass("active");
-    $this.addClass("active");
-    $content.removeClass("active");
-    $(`#tab-${tab}`).addClass("active");
+      // Flag container so it shows border only when something is open
+      $tabs.addClass("has-active");
+    });
 
-    // Flag container so it shows border only when something is open
-    $tabs.addClass("has-active");
+    $(".toggle-switch").each(function() {
+      const v = $(this).data("var");
+      const onVal = $(this).data("on");
+      const offVal = $(this).data("off");
+      const current = urlParams.get(v);
+
+      // Mark as checked if current param equals ON value
+      if (current === onVal) {
+        $(this).prop("checked", true);
+        document.documentElement.dataset[v] = onVal;
+      } else {
+        $(this).prop("checked", false);
+        document.documentElement.dataset[v] = offVal;
+      }
+    });
+
+    // --- React to user toggling ---
+    $(".toggle-switch").on("change", function() {
+      console.log("toggleswitch")
+      const $sw = $(this);
+      const v = $sw.data("var");
+      const onVal = $sw.data("on");
+      const offVal = $sw.data("off");
+      const newVal = $sw.is(":checked") ? onVal : offVal;
+
+      // Update <html data-*>, URL param, and visual state
+      document.documentElement.dataset[v] = newVal;
+      urlParams.set(v, newVal);
+
+      const newUrl = window.location.pathname + "?" + urlParams.toString();
+      window.history.replaceState({}, "", newUrl);
+
+      // reload YAML after version changed
+      if (v === "version") {
+        loadYaml(`data/dinosaurs_${newVal}.yaml`);
+      }
+    });
   });
-});
+})();

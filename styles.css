@@ -20,79 +20,13 @@ body {
   font: 14px/1.4 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, "Helvetica Neue", Arial;
 }
 .container {
-  max-width: 1100px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 16px;
 }
 h1 {
   font-size: 20px;
   margin: 8px 0 4px;
-}
-
-.info-tabs {
-  margin-top: 10px;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  background: var(--panel);
-  margin-bottom: 16px;
-  overflow: hidden;
-  transition: border-color 0.2s;
-}
-
-/* Hide content section completely unless active */
-.info-tabs:not(.has-active) .tab-contents {
-  display: none;
-}
-
-.info-tabs .tab-titles {
-  display: flex;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  border-bottom: 1px solid var(--border);
-  overflow-x: auto;
-}
-
-.info-tabs .tab-titles li {
-  padding: 6px 14px;
-  cursor: pointer;
-  white-space: nowrap;
-  color: var(--muted);
-  user-select: none;
-  transition: background 0.2s, color 0.2s;
-  border-bottom: 2px solid transparent;
-}
-
-.info-tabs .tab-titles li:hover {
-  background: var(--border);
-  color: var(--ink);
-}
-
-.info-tabs .tab-titles li.active {
-  color: var(--ink);
-  border-bottom-color: var(--ink);
-}
-
-.info-tabs .tab-contents {
-  padding: 10px 14px;
-}
-
-.info-tabs .tab {
-  display: none;
-  animation: fadeIn 0.15s ease-in-out;
-}
-
-.info-tabs .tab.active {
-  display: block;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
 }
 
 /* inner wrapper should not clip tooltips/popups */
@@ -345,6 +279,166 @@ th.info-cell {
   line-height: 1;
   vertical-align: middle;
 }
+
+html[data-version="hordetest"] .evrima {
+  display: none;
+}
+html[data-version="evrima"] .hordetest {
+  display: none;
+}
+html[data-ai="false"] .ai {
+  display: none;
+}
+
+/* Tab settings */
+
+.info-tabs {
+  margin-top: 10px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--panel);
+  margin-bottom: 16px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+
+/* Hide content section completely unless active */
+.info-tabs:not(.has-active) .tab-contents {
+  display: none;
+}
+
+.info-tabs .tab-titles {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-bottom: 1px solid var(--border);
+  overflow-x: auto;
+}
+
+.info-tabs .tab-titles li {
+  padding: 6px 14px;
+  cursor: pointer;
+  white-space: nowrap;
+  color: var(--muted);
+  user-select: none;
+  transition: background 0.2s, color 0.2s;
+  border-bottom: 2px solid transparent;
+}
+
+.info-tabs .tab-titles li:hover {
+  background: var(--border);
+  color: var(--ink);
+}
+
+.info-tabs .tab-titles li.active {
+  color: var(--ink);
+  border-bottom-color: var(--ink);
+}
+
+.info-tabs .tab-contents {
+  padding: 10px 14px;
+}
+
+.info-tabs .tab {
+  display: none;
+  animation: fadeIn 0.15s ease-in-out;
+}
+
+.info-tabs .tab.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.tab-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+  background: var(--panel);
+  padding-right: 8px;
+}
+
+.tab-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.switch-group {
+  display: flex;
+  gap: 12px;
+}
+
+/* Basic switch container */
+.switch {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--muted);
+  user-select: none;
+}
+
+/* Hide the default checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider background */
+.slider {
+  position: relative;
+  width: 36px;
+  height: 20px;
+  background-color: var(--border);
+  border-radius: 34px;
+  transition: background-color 0.2s;
+}
+
+/* The knob */
+.slider::before {
+  content: "";
+  position: absolute;
+  height: 14px;
+  width: 14px;
+  left: 3px;
+  top: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.2s;
+}
+
+/* When checked */
+.switch input:checked + .slider {
+  background-color: var(--good);
+}
+
+.switch input:checked + .slider::before {
+  transform: translateX(16px);
+}
+
+.label-text {
+  font-weight: 500;
+  color: var(--muted);
+}
+
+.switch input:checked ~ .label-text {
+  color: var(--ink);
+}
+
+
 
 /* Print styles */
 @media print {

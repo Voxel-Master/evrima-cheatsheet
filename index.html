@@ -37,12 +37,28 @@
         </a>
       </div>
       <div class="info-tabs no-print">
-        <ul class="tab-titles">
-          <li data-tab="usage">Usage notes</li>
-          <li data-tab="updates">Latest changes</li>
-          <li data-tab="trivia">Trivia</li>
-        </ul>
+        <div class="tab-header">
+          <ul class="tab-titles">
+            <li data-tab="usage">Usage notes</li>
+            <li data-tab="updates">Latest changes</li>
+            <li data-tab="trivia">Trivia</li>
+          </ul>
+          <div class="switch-group">
+            <label class="switch">
+              <input type="checkbox" class="toggle-switch" data-var="ai" data-on="true" data-off="false">
+              <span class="slider"></span>
+              <span class="label-text">Show AI</span>
+            </label>
+            <label class="switch">
+              <input type="checkbox" class="toggle-switch" data-var="version" data-on="hordetest" data-off="evrima">
+              <span class="slider"></span>
+              <span class="label-text">Hordetest stats (WIP)</span>
+            </label>
+          </div>
+        </div>
         <div class="tab-contents">
+
+          <!-- /// USAGE /// -->
           <div id="tab-usage" class="tab">
             <p>
               This "cheat sheet" is intended to provide the most important data you might need to look up while playing.
@@ -78,7 +94,19 @@
               AI weight (= HP) should be fairly accurate, excluding fish or if listed with a question mark.
             </p>
           </div>
+          
+          <!-- /// UPDATES /// -->
           <div id="tab-updates" class="tab">
+            <h4>2025-10-31</h4>
+            <p>
+              <ul>
+                <li>Added preliminary hordetest stats with new prime weight column</li>
+                <li>Added toggle button to switch between evrima and hordetest</li>
+                <li>Added toggle button to show/hide AI stats</li>
+                <li>Toggle button state is mirrored via URL parameters "version" and "ai"</li>
+                <li>Slightly increased page width to reduce column crowding</li>
+              </ul>
+            </p>
             <h4>2025-10-24</h4>
             <p>
               <ul>
@@ -118,6 +146,8 @@
               </ul>
             </p>
           </div>
+          
+          <!-- /// TRIVIA /// -->
           <div id="tab-trivia" class="tab">
             <h4>Carrying capacity</h4>
             <p>
@@ -133,6 +163,7 @@
             <p>
               Side note: you can't carry corpses at all when below your freshspawn growth threshold,
               just like you can't eat on your own and require feeding at that growth stage.
+              (This doesn't include deinos, who cannot be fed ever and need to eat on their own even at 0%)
             </p>
             <p>Some notes on corpse carry percentages beyond the info in the carry weight column:
               <ul>
@@ -140,8 +171,11 @@
                   Deinosuchus' 25% carry percentage differs from the max grab weight for live dinos, which is
                   50% for victims on land and 75% for those that are swimming.
                 </li>
-                <li>Pteranodon's carry weight includes both running and flying, and is unusually high (relatively
-                  speaking) meaning you can steal chickens at 12kg already.</li>
+                <li>
+                  Pteranodon's carry weight includes both running and flying, and is unusually high (relatively
+                  speaking) meaning you can steal chickens at 12kg already.
+                  It's probably also not a coincidence that a taco weighs 22.5kg, exactly 50% of a FG ptera.
+                </li>
                 <li>Troodon: 10% (this means you need to be fully grown just to carry a chicken)</li>
                 <li>Galli: 10% (only applies to frogs and crabs)</li>
                 <li>Beipi: 10% (only applies to frogs and crabs; when you can carry either, you can also eat it (whole))</li>
@@ -185,12 +219,13 @@
               <tr>
                 <th class="th-tooltip sortable" data-sort-key="name" data-tip="Dinosaur species name">Dinosaur</th>
                 <th class="th-tooltip sortable" data-sort-key="type" data-tip="Dinosaur type (carnivore, omnivore, herbivore, AI)">Type</th>
-                <th class="th-tooltip sortable" data-sort-key="gt1" data-tip="Growth % when the 1st mutation unlocks. This is also more or less the begging threshold.">1. muta</th>
-                <th class="th-tooltip sortable" data-sort-key="gt2" data-tip="Growth % when the 2nd mutation unlocks">2. muta</th>
-                <th class="th-tooltip sortable" data-sort-key="gt3" data-tip="Growth % when the 3rd mutation unlocks">3. muta</th>
-                <th class="th-tooltip sortable" data-sort-key="sancm" data-tip="Growth % threshold for eating sanctuary mushrooms (not applicable for carnivores)">Sanct. 🍄</th>
-                <th class="th-tooltip sortable" data-sort-key="sanc" data-tip="Growth % after which you can no longer enter sanctuaries. 'No value' means you're allowed in even as adults.">Sanct.</th>
+                <th class="th-tooltip sortable evrima" data-sort-key="gt1" data-tip="Growth % when the 1st mutation unlocks. This is also more or less the begging threshold.">1. muta</th>
+                <th class="th-tooltip sortable evrima" data-sort-key="gt2" data-tip="Growth % when the 2nd mutation unlocks">2. muta</th>
+                <th class="th-tooltip sortable evrima" data-sort-key="gt3" data-tip="Growth % when the 3rd mutation unlocks">3. muta</th>
+                <th class="th-tooltip sortable evrima" data-sort-key="sancm" data-tip="Growth % threshold for eating sanctuary mushrooms (not applicable for carnivores)">Sanct. 🍄</th>
+                <th class="th-tooltip sortable evrima" data-sort-key="sanc" data-tip="Growth % after which you can no longer enter sanctuaries. 'No value' means you're allowed in even as adults.">Sanct.</th>
                 <th class="th-tooltip sortable" data-sort-key="weight" data-tip="Adult weight in kg (HP in parentheses, if it differs)">Weight</th>
+                <th class="th-tooltip sortable hordetest" data-sort-key="primeweight" data-tip="Prime weight in kg (preliminary hordetest stats)">Prime weight</th>
                 <th class="th-tooltip sortable" data-sort-key="bite" data-tip="Adult bite force (N). This only refers to the literal bite force, not your actual most useful attack (see for example stego)">Bite</th>
                 <th class="th-tooltip sortable" data-sort-key="speed" data-tip="Adult top speed (km/h). Does not include special speeds like Carno charge or Galli with nutrient speed boost.">Speed</th>
                 <th class="th-tooltip sortable" data-sort-key="carry" data-tip="Percentage of own body weight that can be carried while running (i.e. not dragged)">Carry %</th>
