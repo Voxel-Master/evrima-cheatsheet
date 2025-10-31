@@ -6,7 +6,15 @@
    - Click-to-sort headers with 3-state cycle: asc -> desc -> default (original YAML order)
 */
 
-
+function updateUrlParam(key, value) {
+  if (value) {
+    urlParams.set(key, value);
+  } else {
+    urlParams.delete(key)
+  }
+  const newUrl = window.location.pathname + "?" + urlParams.toString();
+  window.history.replaceState({}, "", newUrl);
+}
 
 const urlParams = new URLSearchParams();
 const rawUrlParams = new URLSearchParams(window.location.search);
@@ -14,19 +22,54 @@ for (const [name, value] of rawUrlParams) {
   urlParams.append(name.toLowerCase(), value);
 }
 const versionParam = urlParams.get("version");
-version = versionParam ? (versionParam.includes("hordetest") ? "hordetest" : "evrima") : "evrima";
-document.documentElement.dataset.version = version
+document.documentElement.dataset.version = versionParam ? (versionParam.includes("hordetest") ? "hordetest" : "evrima") : "evrima";
 
-const showAiParam = urlParams.get("ai");
-showAI = showAiParam ? (showAiParam.toLowerCase() === "true" ? true : false) : false;
-document.documentElement.dataset.ai = showAI;
+const aiParam = urlParams.get("ai");
+if (aiParam && aiParam.toLowerCase() === "true") {
+  document.documentElement.dataset.ai = true
+}
+
+const serverParam = urlParams.get("server");
+if (serverParam) {
+  document.documentElement.dataset.server = serverParam;
+}
+
+updateUrlParam("version", document.documentElement.dataset.version);
+updateUrlParam("ai", document.documentElement.dataset.ai);
+updateUrlParam("server", document.documentElement.dataset.server);
 
 
-urlParams.set("version", version);
-urlParams.set("ai", showAI);
-const newUrl = window.location.pathname + "?" + urlParams.toString();
-window.history.replaceState({}, "", newUrl);
+const serverSelect = document.getElementById("server");
 
+async function loadServerList() {
+  // If you have only a few known servers, hardcode them for now:
+  const servers = ["jurassic_echoes"];
+  const names = {};
+
+  // Fetch their display names
+  for (const id of servers) {
+    try {
+      const res = await fetch(`data/servers/${id}.yaml`);
+      const text = await res.text();
+      const yaml = jsyaml.load(text);
+      names[id] = yaml.server_info?.name || id;
+    } catch {
+      names[id] = id;
+    }
+  }
+
+  // Populate dropdown
+  for (const [id, name] of Object.entries(names)) {
+    const opt = document.createElement("option");
+    opt.value = id;
+    opt.textContent = name;
+    serverSelect.appendChild(opt);
+  }
+
+  // Set current selection from URL
+  const current = urlParams.get("server");
+  if (current && names[current]) serverSelect.value = current;
+}
 
 (function () {
   // Cached YAML payloads by filename to avoid refetch on toggles
@@ -98,6 +141,7 @@ window.history.replaceState({}, "", newUrl);
       <td class="mono">${fmtNum(st.speed_kmh)}</td>
       <td class="mono">${fmtPct(st.carry_weight_perc)}</td>
       <td class="mono">${fmtPack(pk.base, pk.with_social)}</td>
+      <td class="mono evrima no-print" data-col="points" title="${d.server_stats?.points ? (st.weight_kg/d.server_stats.points).toFixed(2) : '—'}">${fmtNum(d.server_stats?.points)}</td>
       <td class="info-cell no-print" data-tip="Click or tap for details.">${tipsHtml}</td>
     </tr>`;
   }
@@ -325,30 +369,59 @@ window.history.replaceState({}, "", newUrl);
 
   async function loadYaml(fileName) {
     try {
+      let dinos;
       if (yamlCache.has(fileName)) {
-        const dinos = yamlCache.get(fileName);
-        allData = dinos.map((d, i) => ({ ...d, _idx: i }));
-        renderTable();
-        return;
+        dinos = yamlCache.get(fileName);
+      } else {
+        const res = await fetch(fileName, { cache: "no-cache" });
+        const text = await res.text();
+        const data = jsyaml.load(text);
+        dinos = (data && data.dinos) ? data.dinos : [];
+        yamlCache.set(fileName, dinos);
       }
-      const res = await fetch(fileName, { cache: "no-cache" });
-      const text = await res.text();
-      const data = jsyaml.load(text);
-      const dinos = (data && data.dinos) ? data.dinos : [];
-      yamlCache.set(fileName, dinos);
-      allData = dinos.map((d, i) => ({ ...d, _idx: i })); // remember original order
+      if (document.documentElement.dataset.version === "evrima" && document.documentElement.dataset.server) {
+        try {
+          server_file = `data/servers/${document.documentElement.dataset.server}.yaml`
+          let serverYaml;
+          if (yamlCache.has(server_file)) {
+            serverYaml = yamlCache.get(server_file);
+          } else {
+            const res = await fetch(server_file);
+            const text = await res.text();
+            serverYaml = jsyaml.load(text);
+            yamlCache.set(server_file, serverYaml);
+          }
+          const serverDinos = serverYaml.dinos || [];
+
+          // Merge server overrides
+          dinos = dinos.map(d => {
+            const override = serverDinos.find(x => x.name === d.name);
+            if (!override) return d;
+            const merged = structuredClone(d);
+            if (override.server_stats)
+              merged.server_stats = override.server_stats;
+            // Copy any overriding base stats fields
+            if (override.stats)
+              merged.stats = Object.assign({}, merged.stats, override.stats);
+            if (override.pack_size)
+              merged.pack_size = Object.assign({}, merged.pack_size, override.pack_size);
+            return merged;
+          });
+        } catch (err) {
+          console.warn("No server YAML found:", err);
+        }
+      }
+      allData = dinos.map((d, i) => ({ ...d, _idx: i }));
       renderTable();
     } catch (err) {
       console.error("Failed to load YAML:", err);
       tbody.innerHTML = `<tr><td colspan="10">Could not load <code>${fileName}</code>.</td></tr>`;
-
     }
   }
 
-  loadYaml(`data/dinosaurs_${version}.yaml`);
-  attachSortHandlers();
-  attachInfoHandlers();
-  attachHeaderTips();
+  function updateServerSelectState() {
+    serverSelect.disabled = document.documentElement.dataset.version !== "evrima";
+  }
 
   // Tabs setup (requires jQuery)
   $(function () {
@@ -397,24 +470,45 @@ window.history.replaceState({}, "", newUrl);
 
     // --- React to user toggling ---
     $(".toggle-switch").on("change", function () {
-      console.log("toggleswitch")
       const $sw = $(this);
       const v = $sw.data("var");
       const onVal = $sw.data("on");
       const offVal = $sw.data("off");
       const newVal = $sw.is(":checked") ? onVal : offVal;
+      console.log(v)
 
       // Update <html data-*>, URL param, and visual state
       document.documentElement.dataset[v] = newVal;
-      urlParams.set(v, newVal);
-
-      const newUrl = window.location.pathname + "?" + urlParams.toString();
-      window.history.replaceState({}, "", newUrl);
+      updateUrlParam(v, newVal);
 
       // reload YAML after version changed
       if (v === "version") {
         loadYaml(`data/dinosaurs_${newVal}.yaml`);
       }
     });
+
+    $(".toggle-switch[data-var='version']").on("change", function () {
+      const version = $(this).is(":checked") ? $(this).data("on") : $(this).data("off");
+      updateUrlParam("version", version);
+      updateServerSelectState();
+      loadYaml(`data/dinosaurs_${version}.yaml`);
+    });
+
+    serverSelect.addEventListener("change", () => {
+      if (serverSelect.value) {
+        document.documentElement.dataset.server = serverSelect.value;
+      } else {
+        delete document.documentElement.dataset.server
+      }
+      updateUrlParam("server", serverSelect.value);
+      loadYaml(`data/dinosaurs_${document.documentElement.dataset.version}.yaml`);
+    });
+
+    loadServerList();
+    updateServerSelectState();
+    loadYaml(`data/dinosaurs_${document.documentElement.dataset.version}.yaml`);
+    attachSortHandlers();
+    attachInfoHandlers();
+    attachHeaderTips();
   });
 })();

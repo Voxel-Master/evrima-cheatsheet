@@ -286,7 +286,12 @@ html[data-version="hordetest"] .evrima {
 html[data-version="evrima"] .hordetest {
   display: none;
 }
-html[data-ai="false"] .ai {
+html:not([data-ai="true"]) .ai {
+  display: none;
+}
+
+html:not([data-server]) [data-col="points"],
+html:not([data-server]) th[data-sort-key="points"] {
   display: none;
 }
 
@@ -440,6 +445,28 @@ html[data-ai="false"] .ai {
   color: var(--ink);
 }
 
+.server-select {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.server-select select {
+  background: var(--panel);
+  color: var(--ink);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 2px 6px;
+  cursor: pointer;
+}
+
+.server-select select:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 @media (max-width: 700px) {
   .tab-header {
     flex-direction: column; /* stack elements vertically */
@@ -448,9 +475,16 @@ html[data-ai="false"] .ai {
     padding-right: 0;
   }
 
+  .server-select {
+    order: -2;
+    padding: 4px 8px;
+    border-bottom: 1px solid var(--border);
+    justify-content: center;
+  }
+
   .switch-group {
     order: -1; /* move toggles *above* the tabs */
-    justify-content: flex-start; /* align left */
+    justify-content: center; /* align left */
     flex-wrap: wrap; /* allow wrapping if needed */
     padding: 4px 8px;
     gap: 8px;
@@ -458,7 +492,7 @@ html[data-ai="false"] .ai {
   }
 
   .tab-titles {
-    justify-content: flex-start; /* keep tabs left-aligned */
+    justify-content: center; /* keep tabs left-aligned */
     flex-wrap: wrap;
     padding: 0 8px 4px 8px;
   }

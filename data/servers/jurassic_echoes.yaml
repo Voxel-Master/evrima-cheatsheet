@@ -1,0 +1,82 @@
+server_info:
+  name: Jurassic Echoes
+dinos:
+  - name: Tyrannosaurus (WIP)
+    server_stats:
+      points: null
+
+  - name: Allosaurus (WIP)
+    server_stats:
+      points: null
+
+  - name: Carnotaurus
+    server_stats:
+      points: 2600
+
+  - name: Ceratosaurus
+    server_stats:
+      points: 2600
+
+  - name: Deinosuchus
+    server_stats:
+      points: 10000
+
+  - name: Dilophosaurus
+    server_stats:
+      points: 2500
+
+  - name: Herrerasaurus
+    server_stats:
+      points: 1800
+
+  - name: Omniraptor
+    server_stats:
+      points: 2000
+
+  - name: Pteranodon
+    server_stats:
+      points: 1000
+
+  - name: Troodon
+    server_stats:
+      points: 1250
+
+  - name: Beipiaosaurus
+    server_stats:
+      points: 1150
+
+  - name: Gallimimus
+    server_stats:
+      points: 1600
+
+  - name: Diabloceratops
+    server_stats:
+      points: 4000
+
+  - name: Dryosaurus
+    server_stats:
+      points: 1250
+
+  - name: Hypsilophodon
+    server_stats:
+      points: 1000
+
+  - name: Pachycephalosaurus
+    server_stats:
+      points: 2000
+
+  - name: Stegosaurus
+    server_stats:
+      points: 10000
+
+  - name: Tenontosaurus
+    server_stats:
+      points: 2600
+
+  - name: Maiasaura
+    server_stats:
+      points: 3200
+
+  - name: Triceratops
+    server_stats:
+      points: null

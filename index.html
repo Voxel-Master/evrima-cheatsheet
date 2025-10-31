@@ -43,9 +43,15 @@
             <li data-tab="updates">Latest changes</li>
             <li data-tab="trivia">Trivia</li>
           </ul>
+          <div class="server-select">
+            <label for="server" title="Head over to Discord or GitHub if you would like to add a server">Server:</label>
+            <select id="server" disabled>
+              <option value="">Default (none)</option>
+            </select>
+          </div>
           <div class="switch-group">
             <label class="switch">
-              <input type="checkbox" class="toggle-switch" data-var="ai" data-on="true" data-off="false">
+              <input type="checkbox" class="toggle-switch" data-var="ai" data-on="true">
               <span class="slider"></span>
               <span class="label-text">Show AI</span>
             </label>
@@ -231,6 +237,7 @@
                 <th class="th-tooltip sortable" data-sort-key="speed" data-tip="Adult top speed (km/h). Does not include special speeds like Carno charge or Galli with nutrient speed boost.">Speed</th>
                 <th class="th-tooltip sortable" data-sort-key="carry" data-tip="Percentage of own body weight that can be carried while running (i.e. not dragged)">Carry %</th>
                 <th class="th-tooltip sortable" data-sort-key="pack" data-tip="Pack size limit (base / with Social Behaviour; carnivores don't get SB). Note: I haven't verified how non-integer results of Social Behaviour are rounded, hence the .5 values.">Pack size</th>
+                <th class="th-tooltip sortable evrima no-print" data-sort-key="points" data-tip="Server points value (hover for kg/point ratio)">Points</th>
                 <th
                   class="th-tooltip no-print"
                   data-tip="Tap the ⓘ icon for recommended top mutation picks. Disclaimer: these are only subjective recommendations, and very much work in progress!"
