@@ -122,40 +122,47 @@ window.history.replaceState({}, "", newUrl);
     }
   }
 
-  function cmpVal(a, b) {
-    const na = (a === null || a === undefined || a !== a);
-    const nb = (b === null || b === undefined || b !== b);
-    if (na && nb) return 0;
-    if (na) return 1;   // nulls last
-    if (nb) return -1;
+  function isNullish(v){
+    return v === null || v === undefined || v !== v || v === "" || v === "—";
+  }
 
+  function cmpCore(a, b){
     if (Array.isArray(a) || Array.isArray(b)) {
       const A = Array.isArray(a) ? a : [a];
       const B = Array.isArray(b) ? b : [b];
       const len = Math.max(A.length, B.length);
       for (let i = 0; i < len; i++) {
-        const r = cmpVal(A[i], B[i]);
+        const r = cmpCore(A[i], B[i]);
         if (r !== 0) return r;
       }
       return 0;
     }
-
     if (typeof a === "string" || typeof b === "string") {
-      return String(a).localeCompare(String(b));
+      return String(a).localeCompare(String(b), undefined, { numeric: true, sensitivity: "base" });
     }
     const an = Number(a), bn = Number(b);
     if (an < bn) return -1;
     if (an > bn) return 1;
     return 0;
   }
+
+  // Direction-aware compare that ALWAYS sends nullish to bottom
+  function compareForSort(a, b, dir){
+    const aN = isNullish(a), bN = isNullish(b);
+    if (aN !== bN) return aN ? 1 : -1;
+    const base = cmpCore(a, b);
+    return dir === "asc" ? base : -base;
+  }
   function sortData() {
     if (!sortState.key || !sortState.dir) {
-      return [...allData].sort((a, b) => a._idx - b._idx); // default YAML order
+      return [...allData].sort((a, b) => a._idx - b._idx);
     }
-    const { key, dir } = sortState;
-    const sign = dir === "asc" ? 1 : -1;
-    return [...allData].sort((a, b) => sign * cmpVal(getVal(a, key), getVal(b, key)));
+    const { key, dir } = sortState; // "asc" | "desc"
+    return [...allData].sort((a, b) =>
+      compareForSort(getVal(a, key), getVal(b, key), dir)
+    );
   }
+
   function updateHeaderIndicators() {
     document.querySelectorAll("thead th.sortable").forEach(th => {
       const k = th.dataset.sortKey;
@@ -167,11 +174,11 @@ window.history.replaceState({}, "", newUrl);
       th.setAttribute("data-sort", "none");
       th.addEventListener("click", () => {
         const k = th.dataset.sortKey;
-        // cycle: none -> asc -> desc -> none
-        if (sortState.key !== k) { sortState = { key: k, dir: "asc" }; }
-        else if (sortState.dir === "asc") { sortState = { key: k, dir: "desc" }; }
-        else if (sortState.dir === "desc") { sortState = { key: null, dir: null }; }
-        else { sortState = { key: k, dir: "asc" }; }
+        // cycle: none -> desc -> asc -> none
+        if (sortState.key !== k) { sortState = { key: k, dir: "desc" }; }
+        else if (sortState.dir === "desc") { sortState = { key: k, dir: "asc" }; }
+        else if (sortState.dir === "asc") { sortState = { key: null, dir: null }; }
+        else { sortState = { key: k, dir: "desc" }; }
         renderTable();
       });
     });
