@@ -55,11 +55,11 @@
               <span class="slider"></span>
               <span class="label-text">Show AI</span>
             </label>
-            <label class="switch">
+            <!-- <label class="switch">
               <input type="checkbox" class="toggle-switch" data-var="version" data-on="hordetest" data-off="evrima">
               <span class="slider"></span>
-              <span class="label-text">Hordetest stats (WIP)</span>
-            </label>
+              <span class="label-text"><i>Hordetest stats</i></span>
+            </label> -->
           </div>
         </div>
         <div class="tab-contents">
@@ -103,6 +103,15 @@
           
           <!-- /// UPDATES /// -->
           <div id="tab-updates" class="tab">
+            <h4>2026-03-01</h4>
+            <p>
+              <ul>
+                <li>Removed hordetest stats toggle</li>
+                <li>Updated stats to latest evrima version</li>
+                <li>Sanctuary and Sanctuary 🍄 percentages are not yet updated</li>
+                <li>Prime stats are still WIP</li>
+              </ul>
+            </p>
             <h4>2025-10-31</h4>
             <p>
               <ul>
@@ -220,6 +229,18 @@
         </div>
       </div>
 
+    <div class="callout callout-warning no-print">
+      <span class="material-symbols-outlined callout-icon">warning</span>
+      <div class="callout-content">
+        <div class="callout-title">Website Update (2026-03-01)</div>
+        <div class="callout-text">
+          The website was recently updated to reflect changes of the last few months.
+          Prime stats and sanctuary percentages are still WIP.
+          You may need to do a cache refresh (CTRL+F5 or SHIFT+F5) if the page looks weird.
+        </div>
+      </div>
+    </div>
+
     <main class="container">
       <div class="table-scroll">
         <div class="table-wrapper">
@@ -228,18 +249,19 @@
               <tr>
                 <th class="th-tooltip sortable" data-sort-key="name" data-tip="Dinosaur species name">Dinosaur</th>
                 <th class="th-tooltip sortable" data-sort-key="type" data-tip="Dinosaur type (carnivore, omnivore, herbivore, AI)">Type</th>
-                <th class="th-tooltip sortable evrima" data-sort-key="gt1" data-tip="Growth % when the 1st mutation unlocks. This is also more or less the begging threshold.">1. muta</th>
+                <!-- <th class="th-tooltip sortable evrima" data-sort-key="gt1" data-tip="Growth % when the 1st mutation unlocks. This is also more or less the begging threshold.">1. muta</th>
                 <th class="th-tooltip sortable evrima" data-sort-key="gt2" data-tip="Growth % when the 2nd mutation unlocks">2. muta</th>
-                <th class="th-tooltip sortable evrima" data-sort-key="gt3" data-tip="Growth % when the 3rd mutation unlocks">3. muta</th>
-                <th class="th-tooltip sortable evrima" data-sort-key="sancm" data-tip="Growth % threshold for eating sanctuary mushrooms (not applicable for carnivores)">Sanct. 🍄</th>
-                <th class="th-tooltip sortable evrima" data-sort-key="sanc" data-tip="Growth % after which you can no longer enter sanctuaries. 'No value' means you're allowed in even as adults.">Sanct.</th>
+                <th class="th-tooltip sortable evrima" data-sort-key="gt3" data-tip="Growth % when the 3rd mutation unlocks">3. muta</th> -->
+                <th class="th-tooltip sortable" data-sort-key="sancm" data-tip="Growth % threshold for eating sanctuary mushrooms (not applicable for carnivores)">Sanct. 🍄</th>
+                <th class="th-tooltip sortable" data-sort-key="sanc" data-tip="Growth % after which you can no longer enter sanctuaries. 'No value' means you're allowed in even as adults.">Sanct.</th>
                 <th class="th-tooltip sortable" data-sort-key="weight" data-tip="Adult weight in kg (HP in parentheses, if it differs)">Weight</th>
-                <th class="th-tooltip sortable hordetest" data-sort-key="primeweight" data-tip="Prime weight in kg (preliminary hordetest stats)">Prime weight</th>
+                <th class="th-tooltip sortable" data-sort-key="primeweight" data-tip="Prime weight in kg">Prime weight</th>
+                <!-- <th class="th-tooltip sortable hordetest" data-sort-key="primeweight" data-tip="Prime weight in kg (preliminary hordetest stats)">Prime weight</th> -->
                 <th class="th-tooltip sortable" data-sort-key="bite" data-tip="Adult bite force (N). This only refers to the literal bite force, not your actual most useful attack (see for example stego)">Bite</th>
-                <th class="th-tooltip sortable" data-sort-key="speed" data-tip="Adult top speed (km/h). Does not include special speeds like Carno charge or Galli with nutrient speed boost.">Speed</th>
+                <th class="th-tooltip sortable" data-sort-key="speed" data-tip="Adult top speed (km/h); speed in main menu is given in cm/s (???). Does not include special speeds like Carno charge or Galli with nutrient speed boost.">Speed</th>
                 <th class="th-tooltip sortable" data-sort-key="carry" data-tip="Percentage of own body weight that can be carried while running (i.e. not dragged)">Carry %</th>
                 <th class="th-tooltip sortable" data-sort-key="pack" data-tip="Pack size limit (base / with Social Behaviour; carnivores don't get SB). Note: I haven't verified how non-integer results of Social Behaviour are rounded, hence the .5 values.">Pack size</th>
-                <th class="th-tooltip sortable evrima no-print" data-sort-key="points" data-tip="Server points value (hover for kg/point ratio)">Points</th>
+                <th class="th-tooltip sortable no-print" data-sort-key="points" data-tip="Server points value (hover for kg/point ratio)">Points</th>
                 <th
                   class="th-tooltip no-print"
                   data-tip="Tap the ⓘ icon for recommended top mutation picks. Disclaimer: these are only subjective recommendations, and very much work in progress!"

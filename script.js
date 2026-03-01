@@ -130,18 +130,15 @@ async function loadServerList() {
     return `<tr ${ai_toggle}>
       <td>${d.name || "—"}</td>
       <td class="type-cell">${fmtType(d.type)}</td>
-      <td class="mono evrima">${fmtPct(gt.first_mutation)}</td>
-      <td class="mono evrima">${fmtPct(gt.second_mutation)}</td>
-      <td class="mono evrima">${fmtPct(gt.third_mutation)}</td>
-      <td class="mono evrima">${fmtPct(gt.sanctuary_mushroom)}</td>
-      <td class="mono evrima">${fmtPct(gt.sanctuary_lockout)}</td>
+      <td class="mono">${fmtPct(gt.sanctuary_mushroom)}</td>
+      <td class="mono">${fmtPct(gt.sanctuary_lockout)}</td>
       <td class="mono">${fmtNum(st.weight_kg)}</td>
-      <td class="mono hordetest">${fmtNum(st.weight_prime)}</td>
+      <td class="mono">${fmtNum(st.weight_prime)}</td>
       <td class="mono">${fmtNum(st.bite_force_N)}</td>
       <td class="mono">${fmtNum(st.speed_kmh)}</td>
       <td class="mono">${fmtPct(st.carry_weight_perc)}</td>
       <td class="mono">${fmtPack(pk.base, pk.with_social)}</td>
-      <td class="mono evrima no-print" data-col="points" title="${d.server_stats?.points ? (st.weight_kg/d.server_stats.points).toFixed(2) : '—'}">${fmtNum(d.server_stats?.points)}</td>
+      <td class="mono no-print" data-col="points" title="${d.server_stats?.points ? (st.weight_kg/d.server_stats.points).toFixed(2) : '—'}">${fmtNum(d.server_stats?.points)}</td>
       <td class="info-cell no-print" data-tip="Click or tap for details.">${tipsHtml}</td>
     </tr>`;
   }
@@ -154,9 +151,6 @@ async function loadServerList() {
     switch (key) {
       case "name": return (d.name || "").toLowerCase();
       case "type": return (d.type || "").toLowerCase();
-      case "gt1": return normNum(gt.first_mutation);
-      case "gt2": return normNum(gt.second_mutation);
-      case "gt3": return normNum(gt.third_mutation);
       case "sancm": return normNum(gt.sanctuary_mushroom);
       case "sanc": return normNum(gt.sanctuary_lockout);
       case "weight": return normNum(st.weight_kg);
@@ -379,7 +373,8 @@ async function loadServerList() {
         dinos = (data && data.dinos) ? data.dinos : [];
         yamlCache.set(fileName, dinos);
       }
-      if (document.documentElement.dataset.version === "evrima" && document.documentElement.dataset.server) {
+      // if (document.documentElement.dataset.version === "evrima" && document.documentElement.dataset.server) {
+      if (document.documentElement.dataset.server) {
         try {
           server_file = `data/servers/${document.documentElement.dataset.server}.yaml`
           let serverYaml;

@@ -1,38 +1,4 @@
 dinos:
-  - name: Tyrannosaurus (WIP)
-    type: Carnivore
-    growth_thresholds:
-      first_mutation: 0 # tbd
-      second_mutation: 0 # tbd
-      third_mutation: 100
-      sanctuary_lockout: 0 # tbd
-    stats:
-      weight_kg: 9350
-      weight_prime: 12300
-      bite_force_N: 850
-      speed_kmh: 29
-      carry_weight_perc: 0 # tbd
-    pack_size:
-      base: 2
-    mutation_recs: ["tbd"]
-
-  - name: Allosaurus (WIP)
-    type: Carnivore
-    growth_thresholds:
-      first_mutation: 0 # tbd
-      second_mutation: 0 # tbd
-      third_mutation: 100
-      sanctuary_lockout: 0 # tbd
-    stats:
-      weight_kg: 2793
-      weight_prime: null
-      bite_force_N: 175
-      speed_kmh: 35 # speed in main menu is given on a different scale. Multiplied by 0.036 to get kmh.
-      carry_weight_perc: 0 # tbd
-    pack_size:
-      base: 3
-    mutation_recs: ["tbd"]
-
   - name: Carnotaurus
     type: Carnivore
     growth_thresholds:
@@ -42,11 +8,8 @@ dinos:
       sanctuary_lockout: 22.3
     stats:
       weight_kg: 1300
-      weight_prime: 1800 # verified
       bite_force_N: 150
-      # bite_force_prime: 210?
       speed_kmh: 49.5
-      # speed_prime: mind. 55.5
       carry_weight_perc: 10
     pack_size:
       base: 3
@@ -67,8 +30,7 @@ dinos:
       third_mutation: 100
       sanctuary_lockout: 20.3
     stats:
-      weight_kg: 1400
-      weight_prime: 1800 # 1783? 1600?
+      weight_kg: 1300
       bite_force_N: 150
       speed_kmh: 40.2
       carry_weight_perc: 25
@@ -94,7 +56,6 @@ dinos:
       sanctuary_lockout: 0 # yes, crocs are always banned from sanctuaries, even at 0% growth
     stats:
       weight_kg: 8000
-      weight_prime: 13500
       bite_force_N: 500
       speed_kmh: 18
       carry_weight_perc: 25
@@ -119,7 +80,6 @@ dinos:
       sanctuary_lockout: 26.7
     stats:
       weight_kg: 700
-      weight_prime: 977
       bite_force_N: 85
       speed_kmh: 47.5
       carry_weight_perc: 10
@@ -136,7 +96,6 @@ dinos:
       sanctuary_lockout: 22
     stats:
       weight_kg: 175
-      weight_prime: 225
       bite_force_N: 30
       speed_kmh: 45
       carry_weight_perc: 10
@@ -162,7 +121,6 @@ dinos:
       sanctuary_lockout: 25
     stats:
       weight_kg: 450
-      weight_prime: 580
       bite_force_N: 65
       speed_kmh: 46.8
       carry_weight_perc: 10
@@ -188,7 +146,6 @@ dinos:
       sanctuary_lockout: null
     stats:
       weight_kg: 45
-      weight_prime: 60
       bite_force_N: 20
       speed_kmh: 28.5
       carry_weight_perc: 50
@@ -212,7 +169,6 @@ dinos:
       sanctuary_lockout: null
     stats:
       weight_kg: 60
-      weight_prime: 80
       bite_force_N: 15
       speed_kmh: 45
       carry_weight_perc: 10
@@ -238,7 +194,6 @@ dinos:
       sanctuary_lockout: null
     stats:
       weight_kg: 90
-      weight_prime: 110
       bite_force_N: 20
       speed_kmh: 32
       carry_weight_perc: 10
@@ -256,8 +211,7 @@ dinos:
       sanctuary_mushroom: 17
       sanctuary_lockout: 18.5
     stats:
-      weight_kg: 535
-      weight_prime: 560
+      weight_kg: 490
       bite_force_N: 25
       speed_kmh: 49.7
       carry_weight_perc: 10
@@ -285,7 +239,6 @@ dinos:
       sanctuary_lockout: 14.4
     stats:
       weight_kg: 3000
-      weight_prime: 3900
       bite_force_N: 275
       speed_kmh: 36
     pack_size:
@@ -313,7 +266,6 @@ dinos:
       sanctuary_lockout: 99.9
     stats:
       weight_kg: 130
-      weight_prime: 185
       bite_force_N: 20
       speed_kmh: 45
     pack_size:
@@ -331,7 +283,6 @@ dinos:
       sanctuary_lockout: null
     stats:
       weight_kg: 23
-      weight_prime: 27
       bite_force_N: 2
       speed_kmh: 39.6
     pack_size:
@@ -348,8 +299,7 @@ dinos:
       sanctuary_mushroom: 41.6
       sanctuary_lockout: 48
     stats:
-      weight_kg: 700
-      weight_prime: 910
+      weight_kg: 500
       bite_force_N: 30
       speed_kmh: 41.8
     pack_size:
@@ -367,7 +317,6 @@ dinos:
       sanctuary_lockout: 15.6
     stats:
       weight_kg: 6000
-      weight_prime: 9300
       bite_force_N: 50
       speed_kmh: 26.2
     pack_size:
@@ -396,7 +345,6 @@ dinos:
       sanctuary_lockout: 16.8
     stats:
       weight_kg: 1600
-      weight_prime: 1829
       bite_force_N: 35
       speed_kmh: 40.3
     pack_size:
@@ -415,7 +363,6 @@ dinos:
       sanctuary_lockout: 18.2
     stats:
       weight_kg: 3800
-      weight_prime: 5400
       bite_force_N: 40
       speed_kmh: 46.9 # 35.2 in quadrupedal stance
     pack_size:
@@ -442,7 +389,6 @@ dinos:
       sanctuary_lockout: 9.8
     stats:
       weight_kg: 9500
-      weight_prime: 12500
       bite_force_N: 900
       speed_kmh: 23.4
     pack_size:

@@ -467,6 +467,46 @@ html:not([data-server]) th[data-sort-key="points"] {
   cursor: not-allowed;
 }
 
+/* WARNING BOX */
+
+.callout {
+  display: flex;
+  gap: 12px;
+  padding: 16px 18px;
+  border-radius: 10px;
+  border: 1px solid;
+  align-items: flex-start;
+  font-family: system-ui, sans-serif;
+}
+
+.callout-icon {
+  font-size: 22px;
+  line-height: 1;
+  margin-top: 2px;
+}
+
+/* Warning style */
+.callout-warning {
+  background-color: #fff4e5;
+  border-color: #7a4b00;
+  color: #7a4b00;
+}
+
+.callout-warning .callout-icon {
+  color: #d97706;
+}
+
+.callout-title {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.callout-text {
+  opacity: 0.9;
+}
+
+
+
 @media (max-width: 700px) {
   .tab-header {
     flex-direction: column; /* stack elements vertically */
